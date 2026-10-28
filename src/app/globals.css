@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces/full.css";
+@import "@fontsource-variable/dm-sans/index.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+
+@theme {
+  --color-paper: #faf7f6;
+  --color-surface: #f1eceb;
+  --color-ink: #2a1d26;
+  --color-rule: #ded5d9;
+  --color-blush: #f5e7ed;
+  --color-petal: #e9b7cc;
+  --color-rose: #bc698c;
+  --color-rose-ink: #984064;
+  --color-plum: #432c3c;
+  --color-plum-soft: #705e69;
+  --color-card: #ffffff;
+  --color-line: #ded5d9;
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-line: line 0.8s var(--ease-expo) both;
+  --animate-fade: fade 0.6s var(--ease-soft) both;
+  --animate-tile: tile 0.6s var(--ease-expo) both;
+
+  @keyframes line {
+    from { transform: translateY(105%); }
+    to { transform: none; }
+  }
+  @keyframes fade {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+  }
+  @keyframes tile {
+    from { opacity: 0.5; transform: scale(0.9); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+    scrollbar-color: var(--color-petal) var(--color-paper);
+    scrollbar-width: thin;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-plum);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  a, button, summary { -webkit-tap-highlight-color: transparent; }
+  button, summary { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  ::selection { background: var(--color-petal); color: var(--color-ink); }
+  :focus-visible {
+    outline: 2px solid var(--color-rose-ink);
+    outline-offset: 5px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .section-space { padding-block: clamp(4.5rem, 8vw, 7rem); }
+  .section-rule { border-top: 1px solid var(--color-rule); padding-top: clamp(2rem, 4vw, 3rem); }
+  .section-title {
+    font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--color-rose-ink);
+  }
+  .todo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    max-width: 100%;
+    border-bottom: 1px dashed var(--color-rose);
+    padding-block: 0.15rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--color-plum-soft);
+    overflow-wrap: anywhere;
+  }
+  .todo > svg { flex-shrink: 0; align-self: center; }
+  .text-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-petal);
+    text-underline-offset: 6px;
+    transition: color 180ms, text-decoration-color 180ms;
+  }
+  .text-link:hover { color: var(--color-rose-ink); text-decoration-color: currentColor; }
+  .project-visual { background: var(--color-surface); }
+  .project-visual[data-accent="pink"] { background: var(--color-blush); }
+  .project-visual[data-accent="plum"] { background: var(--color-plum); }
+  .project-visual[data-accent="plum"] svg { --color-ink: var(--color-paper); --color-rule: #806c79; }
+  .project-visual svg { transition: transform 400ms var(--ease-soft); }
+  @media (hover: hover) {
+    .project-row:hover .project-visual svg { transform: translateY(-3px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
