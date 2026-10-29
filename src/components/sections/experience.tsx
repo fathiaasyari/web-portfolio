@@ -1,24 +1,27 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { ScrollOrnament } from "@/components/scroll-ornament";
 import { experience, experienceSection } from "@/content/site";
 import { Text } from "@/components/ui";
 import "@/components/folio.css";
+import "@/components/folio-finishing.css";
 
 export function Experience() {
   const section = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start 85%", "end 70%"] });
-  const readingProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 26 });
+  const readingProgress = useTransform(smoothProgress, [0, 1], [0, 1]);
   const headingParts = experienceSection.heading.split(/\*([^*]+)\*/);
 
   return (
-    <section ref={section} id="experience" aria-labelledby="experience-title" className="folio-experience">
+    <section ref={section} id="experience" aria-labelledby="experience-title" className="folio-experience folio-finished">
       <div className="folio-experienceInner">
-        <h2 id="experience-title" className="folio-experienceHeading">
+        <div className="folio-experienceHeadingRow"><h2 id="experience-title" className="folio-experienceHeading">
           {headingParts.map((part, index) => index % 2 ? <span key={index} className="folio-experienceAccent">{part}</span> : <span key={index}>{part}</span>)}
-        </h2>
+        </h2><ScrollOrnament variant="growth" className="folio-experienceOrnament" /></div>
         <ol className="folio-jobs">
           {experience.map((job) => (
             <li key={job.org}>

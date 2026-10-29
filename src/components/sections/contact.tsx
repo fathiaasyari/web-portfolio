@@ -2,7 +2,9 @@ import { ArrowUp, ArrowUpRight, Mail } from "lucide-react";
 import { contact, footer, person } from "@/content/site";
 import { CopyEmail } from "@/components/copy-email";
 import { CvButton, isTodo, MaybeLink, Text } from "@/components/ui";
+import { ScrollOrnament } from "@/components/scroll-ornament";
 import "@/components/folio.css";
+import "@/components/folio-finishing.css";
 
 async function BuildYear() {
   "use cache";
@@ -13,9 +15,9 @@ export function Contact() {
   const email = contact.email;
   const headingParts = contact.heading.split(/\*([^*]+)\*/);
   return (
-      <section id="contact" aria-labelledby="contact-title" className="folio-contact">
+      <section id="contact" aria-labelledby="contact-title" className="folio-contact folio-finished">
         <div className="folio-contactInner">
-          <h2 id="contact-title">{headingParts.map((part, index) => <span key={index} className={index % 2 ? "folio-contactAccent" : undefined}>{part}</span>)}</h2>
+          <div className="folio-contactHeadingRow"><h2 id="contact-title">{headingParts.map((part, index) => <span key={index} className={index % 2 ? "folio-contactAccent" : undefined}>{part}</span>)}</h2><ScrollOrnament variant="letter" className="folio-contactOrnament" /></div>
           <div className="folio-contactGrid">
           <div className="folio-contactIntro">
             <p>{contact.body}</p>
@@ -47,10 +49,11 @@ export function Contact() {
 
 export function SiteFooter() {
   return (
-      <footer className="folio-footer">
+      <footer className="folio-footer folio-finished">
         <div className="folio-footerInner">
           <div className="folio-footerTop">
             <a href="#home" className="folio-footerWordmark" aria-label={`${person.fullName} — return to the beginning`}>{person.wordmark}<span>.</span></a>
+            <ScrollOrnament variant="bloom" className="folio-footerBloom" />
             <a href="#home" className="folio-backTop">Back to top<span><ArrowUp aria-hidden size={20} strokeWidth={1.5} /></span></a>
           </div>
           <div className="folio-footerBottom">

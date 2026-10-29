@@ -1,0 +1,84 @@
+/* Finishing details, with the same paper-and-geometry language as the cover. */
+.folio-finished { --ornament-accent: var(--folio-rose); --ornament-paper: var(--folio-cream); }
+.folio-scrollOrnament { width: 220px; color: var(--folio-olive); pointer-events: none; }
+.folio-scrollOrnament svg { display: block; width: 100%; height: auto; overflow: visible; }
+.folio-experience.folio-finished { --ornament-accent: var(--folio-cream); --ornament-paper: var(--folio-forest); overflow: clip; }
+.folio-experienceHeadingRow { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 48px; align-items: center; }
+.folio-finished .folio-experienceHeading { rotate: -2deg; }
+.folio-finished .folio-experienceAccent { font-style: italic; }
+.folio-experienceOrnament { width: 180px; color: var(--folio-blush); }
+.folio-finished .folio-jobIdentity { position: relative; }
+.folio-finished .folio-jobPeriod { width: fit-content; rotate: -4deg; font-family: var(--font-display); font-size: 18px; font-style: italic; }
+.folio-finished .folio-jobScope { position: relative; }
+.folio-finished .folio-jobScope strong { font-size: 38px; rotate: -8deg; }
+.folio-finished .folio-jobOrg { rotate: -1deg; }
+.folio-toolkit.folio-finished { overflow: clip; }
+.folio-finished .folio-toolkitIntro h2 { rotate: -3deg; }
+.folio-finished .folio-toolkitAccent { font-style: italic; }
+.folio-toolkitOrnament { width: 260px; max-width: 85%; margin: 26px 0 0 24px; }
+.folio-finished .folio-toolkitGroup { position: relative; }
+.folio-finished .folio-toolkitGroup h3 { width: fit-content; rotate: -2deg; }
+.folio-finished .folio-toolkitGroup:nth-child(even) h3 { rotate: 2deg; color: var(--folio-rose); }
+.folio-finished .folio-toolkitTools li { transition: color 180ms, translate 220ms var(--ease-expo); }
+@media (hover: hover) { .folio-finished .folio-toolkitTools li:hover { color: var(--folio-rose); translate: 0 -2px; } }
+.folio-finished .folio-beyondIntro h2 { rotate: -2deg; }
+.folio-finished .folio-beyondAccent { font-style: italic; }
+.folio-finished .folio-personalNote { position: relative; box-shadow: 2px 15px 28px -23px #40332f70; }
+.folio-finished .folio-personalNote::before { content: ""; position: absolute; width: 72px; height: 23px; top: -11px; left: 35%; background: #d4c7abb3; rotate: -8deg; }
+.folio-personalBloom { position: absolute; top: -42px; right: -35px; width: 120px; color: var(--folio-rose); }
+.folio-finished .folio-beyondEntryMeta h3 { rotate: -2deg; }
+.folio-finished .folio-beyondEntries > li:nth-child(2) h3 { color: var(--folio-rose); rotate: 2deg; }
+.folio-contact.folio-finished { overflow: clip; --ornament-accent: var(--folio-olive); }
+.folio-contactHeadingRow { display: grid; grid-template-columns: minmax(0, 1fr) 200px; align-items: center; gap: 36px; }
+.folio-finished .folio-contactHeadingRow h2 { rotate: -2deg; }
+.folio-finished .folio-contactAccent { font-style: italic; margin-right: 0.12em; }
+.folio-contactOrnament { width: 200px; color: var(--folio-rose); }
+.folio-finished .folio-contactIntro { rotate: -1deg; }
+.folio-finished .folio-contactDetails { rotate: 1deg; }
+.folio-finished .folio-footerTop { position: relative; }
+.folio-footerBloom { position: absolute; left: 48%; top: 8px; width: 88px; color: var(--folio-blush); --ornament-paper: #51573e; }
+/* Scroll-linked gestures stay visible without JavaScript or timeline support. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .folio-finished .folio-jobIdentity { animation: folio-identity-settle auto both; animation-timeline: view(); animation-range: entry 0% entry 95%; }
+    .folio-finished .folio-contributions li { animation: folio-contribution-settle auto both; animation-timeline: view(); animation-range: entry 0% entry 95%; }
+    .folio-finished .folio-toolkitGroup { animation: folio-tool-settle auto both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+    .folio-finished .folio-toolkitGroup:nth-child(even) { animation-name: folio-tool-counter; }
+    .folio-finished .folio-beyondEntries > li { animation: folio-entry-settle auto both; animation-timeline: view(); animation-range: entry 0% entry 95%; }
+    .folio-finished .folio-contactHeadingRow h2 { animation: folio-contact-settle auto both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+    .folio-finished .folio-contactGrid { animation: folio-contact-details auto both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  }
+}
+@keyframes folio-identity-settle { from { transform: translateY(24px) rotate(-1deg); } to { transform: translateY(0) rotate(0); } }
+@keyframes folio-contribution-settle { from { transform: translate(16px, 10px); } to { transform: translate(0, 0); } }
+@keyframes folio-tool-settle { from { transform: translate(15px, 18px); } to { transform: translate(0, 0); } }
+@keyframes folio-tool-counter { from { transform: translate(-15px, 18px); } to { transform: translate(0, 0); } }
+@keyframes folio-entry-settle { from { transform: translateY(20px); clip-path: inset(0 0 3%); } to { transform: translateY(0); clip-path: inset(0); } }
+@keyframes folio-contact-settle { from { transform: translateY(22px) rotate(1deg); } to { transform: translateY(0) rotate(0); } }
+@keyframes folio-contact-details { from { transform: translateY(18px); } to { transform: translateY(0); } }
+@media (max-width: 899px) {
+  .folio-experienceHeadingRow { grid-template-columns: minmax(0, 1fr) 125px; gap: 24px; }
+  .folio-experienceOrnament { width: 125px; }
+  .folio-toolkitOrnament { margin-left: 0; }
+  .folio-contactHeadingRow { grid-template-columns: minmax(0, 1fr) 140px; gap: 24px; }
+  .folio-contactOrnament { width: 140px; }
+}
+@media (max-width: 599px) {
+  .folio-experienceHeadingRow { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .folio-experienceOrnament { width: 145px; justify-self: end; margin: -8px 0 -15px; }
+  .folio-finished .folio-jobs { margin-top: 32px; }
+  .folio-toolkitOrnament { width: 190px; margin: 22px auto 0; }
+  .folio-personalBloom { width: 96px; top: -35px; right: -15px; }
+  .folio-contactHeadingRow { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .folio-contactOrnament { justify-self: end; width: 145px; margin: 0 0 -12px; }
+  .folio-finished .folio-contactDetails, .folio-finished .folio-contactIntro { rotate: none; }
+  .folio-footerBloom { width: 55px; left: 45%; top: 7px; }
+}
+@media (max-width: 359px) {
+  .folio-footerBloom { width: 40px; left: 48%; top: 68px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folio-finished *, .folio-finished *::before, .folio-finished *::after { animation: none !important; transition: none !important; }
+  .folio-finished .folio-toolkitIntro { position: static; }
+  .folio-finished .folio-toolkitTools li:hover { translate: none; }
+}

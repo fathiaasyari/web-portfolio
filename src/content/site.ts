@@ -75,6 +75,9 @@ export const nav = [
 // ─── Hero ────────────────────────────────────────────────────────────────────
 
 export const hero = {
+  portraitPending: "Portrait coming soon",
+  roleLines: ["Data", "& Business", "Analytics"],
+  collageWords: ["data", "business", "& a little curiosity"],
   greeting: "Hello, I’m",
   cvPending: "CV coming soon",
   atlasTitle: "West Java",

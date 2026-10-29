@@ -1,0 +1,85 @@
+/* Three editorial compositions, with diagrams explained by the scroll itself. */
+.folio-projectsCollage { padding: 100px 0 80px; }
+.folio-projectsCollage .folio-projectsIntro { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.65fr); gap: 70px; padding: 15px 8px 35px; }
+.folio-projectsCollage .folio-projectsIntro h2 { max-width: 800px; font-size: clamp(48px, 5.5vw, 78px); rotate: -3deg; }
+.folio-projectsCollage .folio-projectsAccent { font-style: italic; position: relative; }
+.folio-projectsCollage .folio-projectsAccent::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 9px; border-bottom: 2px solid currentColor; border-radius: 50%; rotate: -2deg; }
+.folio-projectsCollage .folio-projectsIntro > p { rotate: 4deg; max-width: 270px; margin-bottom: 5px; }
+.folio-projectsCollage .folio-projectList { margin-top: 45px; }
+.folio-projectsCollage .folio-projectList > li { border: 0; }
+.folio-projectsCollage .folio-projectList > li + li { margin-top: 38px; }
+.folio-projectsCollage .folio-projectRow { position: relative; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: 95px; min-height: 690px; padding: 85px 8px 95px; align-items: center; }
+.folio-projectsCollage .folio-projectRow[data-reversed="true"] { grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr); }
+.folio-projectsCollage .folio-projectFigure { position: sticky; top: 140px; align-self: start; margin-top: 30px; isolation: isolate; padding: 0; }
+.folio-projectsCollage .folio-projectFigure::before { content: ""; position: absolute; inset: -9% -4% -6%; background: var(--folio-blush); border-radius: 46% 54% 39% 61% / 48% 36% 64% 52%; rotate: -12deg; z-index: -2; }
+.folio-projectsCollage .folio-projectRow[data-reversed="true"] .folio-projectFigure::before { background: #e5e6d9; rotate: 14deg; }
+.folio-projectsCollage .folio-projectList > li:last-child .folio-projectFigure::before { background: #e7dcd3; }
+.folio-projectsCollage .folio-projectPlate { position: relative; width: 88%; margin: auto; padding: 24px; box-shadow: 3px 18px 35px -24px #40332f80; }
+.folio-projectsCollage .folio-projectPlate::before { content: ""; position: absolute; width: 66px; height: 24px; left: 40%; top: -12px; rotate: 6deg; background: #d5c9b1b0; }
+.folio-projectsCollage .folio-projectPlate[data-method="2"]::before { background: #edc5c9c7; }
+.folio-projectsCollage .folio-projectPlateMeta > span:first-child { font-size: 34px; font-style: italic; }
+.folio-projectsCollage .folio-projectPlateMeta > span:last-child { max-width: 175px; text-align: right; }
+.folio-projectsCollage .folio-projectPlate svg { margin: 20px 0 22px; }
+.folio-projectsCollage .folio-projectMethod { max-width: 260px; font-size: 32px; }
+.folio-projectsCollage .folio-projectFigure figcaption { position: relative; margin: 28px 0 0 12%; max-width: 260px; rotate: -4deg; font-size: 11px; }
+.folio-projectDecoration { position: absolute; inset: -45px -25px -32px; pointer-events: none; z-index: -1; }
+.folio-projectOrnaments { position: absolute; inset: 0; }
+.folio-projectOrbit { position: absolute; width: 100%; height: 100%; overflow: visible; stroke: var(--folio-olive); stroke-width: 1; }
+.folio-projectOrbit ellipse { opacity: 0.45; }
+.folio-projectOrbit path { stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.folio-projectOrbit circle { fill: var(--folio-rose); stroke: none; }
+.folio-projectBloom { position: absolute; right: -3%; top: -2%; width: 62px; color: var(--folio-rose); rotate: 10deg; }
+.folio-projectConfetti { position: absolute; bottom: 12%; left: -1%; display: flex; align-items: end; gap: 6px; rotate: -14deg; }
+.folio-projectConfetti i { display: block; width: 17px; height: 22px; border-radius: 50% 50% 2px 2px; background: var(--folio-olive); }
+.folio-projectConfetti i:nth-child(2) { height: 36px; background: var(--folio-rose); }
+.folio-projectConfetti i:nth-child(3) { height: 49px; }
+.folio-projectsCollage .folio-projectCopy { position: relative; padding: 18px 0 0; }
+.folio-projectsCollage .folio-projectCategory { width: fit-content; margin-left: 6px; rotate: -5deg; font-family: var(--font-display); font-size: 18px; font-style: italic; }
+.folio-projectsCollage .folio-projectCopy h3 { margin-top: 24px; font-size: clamp(33px, 3.4vw, 48px); rotate: 2deg; }
+.folio-projectsCollage .folio-projectRow[data-reversed="true"] .folio-projectCopy h3 { rotate: -3deg; }
+.folio-projectsCollage .folio-projectSummary { margin-top: 28px; max-width: 430px; }
+.folio-projectsCollage .folio-projectStack { margin-top: 22px; }
+.folio-projectsCollage .folio-caseStudy { margin-top: 30px; }
+.folio-projectsCollage .folio-projectLinks { margin-top: 10px; }
+@media (min-width: 1200px) {
+  .folio-projectsCollage .folio-projectRow[data-reversed="true"] .folio-projectCopy { padding-top: 45px; }
+}
+@media (max-width: 1199px) {
+  .folio-projectsCollage .folio-projectRow, .folio-projectsCollage .folio-projectRow[data-reversed="true"] { gap: 55px; min-height: 650px; }
+  .folio-projectsCollage .folio-projectsIntro { gap: 40px; }
+  .folio-projectsCollage .folio-projectPlate { width: 94%; padding: 22px; }
+  .folio-projectBloom { right: -1%; width: 50px; }
+}
+@media (max-width: 899px) {
+  .folio-projectsCollage { padding: 76px 0 55px; }
+  .folio-projectsCollage .folio-projectsIntro { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .folio-projectsCollage .folio-projectsIntro h2 { max-width: 650px; font-size: 58px; }
+  .folio-projectsCollage .folio-projectsIntro > p { justify-self: end; max-width: 310px; }
+  .folio-projectsCollage .folio-projectRow, .folio-projectsCollage .folio-projectRow[data-reversed="true"] { gap: 35px; padding: 65px 0; min-height: 620px; }
+  .folio-projectsCollage .folio-projectCopy h3 { font-size: 32px; }
+  .folio-projectsCollage .folio-projectPlate { padding: 18px; }
+  .folio-projectsCollage .folio-projectMethod { font-size: 26px; }
+  .folio-projectsCollage .folio-projectPlateMeta { font-size: 9px; }
+  .folio-projectDecoration { inset: -36px -12px -25px; }
+  .folio-projectBloom { width: 44px; }
+}
+@media (max-width: 599px) {
+  .folio-projectsCollage { padding: 64px 0 35px; }
+  .folio-projectsCollage .folio-projectsIntro { padding: 0 4px 24px; gap: 28px; }
+  .folio-projectsCollage .folio-projectsIntro h2 { font-size: clamp(39px, 11vw, 58px); }
+  .folio-projectsCollage .folio-projectsIntro > p { max-width: 270px; margin-right: 8px; font-size: 14px; }
+  .folio-projectsCollage .folio-projectList { margin-top: 25px; }
+  .folio-projectsCollage .folio-projectRow, .folio-projectsCollage .folio-projectRow[data-reversed="true"] { grid-template-columns: minmax(0, 1fr); gap: 58px; min-height: auto; padding: 48px 4px 44px; }
+  .folio-projectsCollage .folio-projectFigure { position: relative; top: auto; margin: 0 12px; }
+  .folio-projectsCollage .folio-projectPlate { width: 94%; padding: 20px; }
+  .folio-projectsCollage .folio-projectMethod { font-size: 29px; }
+  .folio-projectsCollage .folio-projectFigure figcaption { margin-top: 28px; font-size: 10px; }
+  .folio-projectsCollage .folio-projectCopy { padding: 0; }
+  .folio-projectsCollage .folio-projectCopy h3 { font-size: 34px; margin-top: 18px; }
+  .folio-projectsCollage .folio-projectSummary { margin-top: 24px; }
+  .folio-projectsCollage .folio-projectList > li + li { margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folio-projectsCollage *, .folio-projectsCollage *::before, .folio-projectsCollage *::after { animation: none !important; transition: none !important; }
+  .folio-projectsCollage .folio-projectFigure { position: relative; top: auto; }
+}

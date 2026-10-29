@@ -1,0 +1,81 @@
+/* A second page of the same scrapbook: curious geometry and warm paper. */
+.folio-aboutCollage { padding: 70px 0 110px; }
+.folio-aboutCollage .folio-aboutGrid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 90px; }
+.folio-aboutCollage .folio-aboutIdentity { position: relative; padding-top: 10px; }
+.folio-aboutCollage .folio-aboutHeading { max-width: 470px; font-size: clamp(44px, 4.6vw, 66px); rotate: -4deg; transform-origin: left center; }
+.folio-aboutCollage .folio-aboutAccent { position: relative; display: inline-block; font-style: italic; }
+.folio-aboutCollage .folio-aboutAccent::after { content: ""; position: absolute; inset: auto -4px -3px; height: 8px; border-bottom: 2px solid var(--folio-rose); border-radius: 50%; rotate: -2deg; transform-origin: left; }
+.folio-curiosityArt { width: 100%; max-width: 400px; margin: 20px 0 8px -12px; }
+.folio-curiosityArt svg { display: block; width: 100%; overflow: visible; }
+.folio-curiosityOrbit { stroke: var(--folio-olive); stroke-width: 1; opacity: 0.5; }
+.folio-curiosityTrail { stroke: var(--folio-olive); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.folio-curiosityMatrix rect { fill: var(--folio-olive); }
+.folio-curiosityMatrix .folio-curiosityTileRose { fill: var(--folio-rose); }
+.folio-curiosityLens { transform-origin: 224px 105px; transition: transform 450ms var(--ease-expo); }
+.folio-curiosityArt:hover .folio-curiosityLens { transform: translate(-8px, 3px) rotate(-9deg); }
+.folio-curiosityBloom { transform-origin: 332px 64px; }
+.folio-aboutCollage .folio-aboutNote { max-width: 360px; margin: 28px 6px 0 20px; padding: 32px 28px 26px; background: var(--folio-blush); rotate: -3deg; box-shadow: 2px 12px 26px -20px #40332f66; }
+.folio-aboutCollage .folio-aboutNote::before { content: ""; position: absolute; top: -11px; left: 40%; width: 64px; height: 22px; background: #dbcfb8b3; rotate: 7deg; }
+.folio-aboutCollage .folio-quoteMark { top: -12px; left: 13px; font-size: 80px; color: var(--folio-rose); }
+.folio-aboutCollage .folio-aboutNote p { font-size: 23px; line-height: 1.5; }
+.folio-aboutCollage .folio-aboutNote footer { margin-top: 18px; color: var(--folio-ink); rotate: -5deg; }
+.folio-aboutCollage .folio-aboutStory { padding-top: 26px; }
+.folio-aboutCollage .folio-aboutProse .folio-aboutLead { font-size: 21px; line-height: 1.7; }
+.folio-aboutCollage .folio-aboutTraits { margin-top: 40px; column-gap: 32px; row-gap: 30px; }
+.folio-aboutCollage .folio-aboutTraits li { position: relative; padding-top: 18px; }
+.folio-traitEmblem { display: grid; place-items: center; position: relative; isolation: isolate; width: 52px; height: 52px; margin-bottom: 14px; color: var(--folio-olive); rotate: -8deg; }
+.folio-traitEmblem::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #e5e6d9; border-radius: 42% 58% 55% 45% / 53% 40% 60% 47%; transition: transform 300ms var(--ease-expo); }
+.folio-aboutTraits li:nth-child(2n) .folio-traitEmblem { color: var(--folio-rose); rotate: 9deg; }
+.folio-aboutTraits li:nth-child(2n) .folio-traitEmblem::before { background: var(--folio-blush); border-radius: 55% 45% 38% 62% / 41% 56% 44% 59%; }
+.folio-traitEmblem svg { transition: transform 300ms var(--ease-expo); }
+.folio-aboutTraits li:hover .folio-traitEmblem::before { transform: rotate(22deg) scale(1.08); }
+.folio-aboutTraits li:hover .folio-traitEmblem svg { transform: rotate(-8deg) translateY(-2px); }
+.folio-aboutCollage .folio-aboutTraits h3 { font-size: 25px; }
+.folio-aboutCollage .folio-aboutTraits p { margin-top: 10px; font-size: 14px; line-height: 1.75; }
+@media (prefers-reduced-motion: no-preference) {
+  .folio-aboutCollage[data-entered="true"] .folio-aboutAccent::after { animation: curiosity-underline 800ms 180ms var(--ease-expo) both; }
+  .folio-aboutCollage[data-entered="true"] .folio-curiosityMatrix rect { animation: curiosity-tile 650ms var(--ease-expo) both; transform-box: fill-box; transform-origin: center; }
+  .folio-aboutCollage[data-entered="true"] .folio-curiosityMatrix rect:nth-child(3n + 2) { animation-delay: 100ms; }
+  .folio-aboutCollage[data-entered="true"] .folio-curiosityMatrix rect:nth-child(3n) { animation-delay: 200ms; }
+  .folio-aboutCollage[data-entered="true"] .folio-curiosityBloom { animation: curiosity-bloom 7s ease-in-out 3; }
+  .folio-aboutCollage[data-entered="true"] .folio-curiosityTrail { animation: curiosity-trail 1.2s 120ms var(--ease-expo) both; stroke-dasharray: 190; }
+  .folio-aboutCollage[data-entered="true"] .folio-traitEmblem { animation: curiosity-emblem 700ms 100ms var(--ease-expo) both; }
+  .folio-aboutCollage[data-entered="true"] .folio-aboutTraits li:nth-child(2) .folio-traitEmblem { animation-delay: 180ms; }
+  .folio-aboutCollage[data-entered="true"] .folio-aboutTraits li:nth-child(3) .folio-traitEmblem { animation-delay: 260ms; }
+  .folio-aboutCollage[data-entered="true"] .folio-aboutTraits li:nth-child(4) .folio-traitEmblem { animation-delay: 340ms; }
+}
+@keyframes curiosity-underline { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
+@keyframes curiosity-tile { from { transform: scale(0.65) rotate(-18deg); opacity: 0.5; } to { transform: scale(1) rotate(0); opacity: 1; } }
+@keyframes curiosity-bloom { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(24deg); } }
+@keyframes curiosity-trail { from { stroke-dashoffset: 190; } to { stroke-dashoffset: 0; } }
+@keyframes curiosity-emblem { from { transform: translateY(10px) scale(0.85); } to { transform: translateY(0) scale(1); } }
+@media (max-width: 1199px) { .folio-aboutCollage .folio-aboutGrid { gap: 56px; } }
+@media (min-width: 600px) and (max-width: 899px) {
+  .folio-aboutCollage { padding: 56px 0 80px; }
+  .folio-aboutCollage .folio-aboutGrid { grid-template-columns: minmax(0, 1fr); gap: 42px; }
+  .folio-aboutCollage .folio-aboutIdentity { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 18px 30px; align-items: center; }
+  .folio-aboutCollage .folio-aboutHeading { font-size: 48px; }
+  .folio-curiosityArt { grid-column: 1; margin: 0; }
+  .folio-aboutCollage .folio-aboutNote { grid-column: 2; grid-row: 1 / 3; margin: 8px 0; padding: 30px 24px 24px; }
+  .folio-aboutCollage .folio-aboutNote p { font-size: 22px; }
+  .folio-aboutCollage .folio-aboutStory { padding: 0; }
+}
+@media (max-width: 599px) {
+  .folio-aboutCollage { padding: 52px 0 72px; }
+  .folio-aboutCollage .folio-aboutGrid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .folio-aboutCollage .folio-aboutIdentity { display: contents; }
+  .folio-aboutCollage .folio-aboutHeading { grid-row: 1; font-size: clamp(39px, 10.6vw, 52px); margin-left: 5px; }
+  .folio-curiosityArt { grid-row: 2; max-width: 340px; margin: -12px auto -8px; }
+  .folio-aboutCollage .folio-aboutStory { display: contents; }
+  .folio-aboutCollage .folio-aboutProse { grid-row: 3; }
+  .folio-aboutCollage .folio-aboutProse .folio-aboutLead { font-size: 19px; line-height: 1.75; }
+  .folio-aboutCollage .folio-aboutTraits { grid-row: 4; margin: 2px 0 0; gap: 30px 22px; }
+  .folio-aboutCollage .folio-aboutTraits h3 { font-size: 23px; }
+  .folio-aboutCollage .folio-aboutTraits p { font-size: 13px; }
+  .folio-aboutCollage .folio-aboutNote { grid-row: 5; max-width: 340px; margin: 14px 10px 0; padding: 32px 26px 26px; }
+  .folio-aboutCollage .folio-aboutNote p { font-size: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folio-aboutCollage *, .folio-aboutCollage *::before, .folio-aboutCollage *::after { animation: none !important; transition: none !important; }
+  .folio-aboutCollage .folio-curiosityArt:hover .folio-curiosityLens, .folio-aboutCollage .folio-aboutTraits li:hover .folio-traitEmblem svg, .folio-aboutCollage .folio-aboutTraits li:hover .folio-traitEmblem::before { transform: none; }
+}

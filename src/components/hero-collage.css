@@ -1,0 +1,90 @@
+/* A portrait-led collage in the portfolio's existing paper, rose and olive. */
+.folio-heroGrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.folio-collage { height: 550px; padding: 0; isolation: isolate; }
+.folio-collageWash { position: absolute; inset: 15% 2% 16% 5%; z-index: -2; background: var(--folio-blush); border-radius: 47% 53% 62% 38% / 52% 37% 63% 48%; rotate: -12deg; }
+.folio-collageOrbit { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: -1; stroke: var(--folio-olive); stroke-width: 1; }
+.folio-collageOrbit ellipse { opacity: 0.5; }
+.folio-collageOrbit path { stroke-linecap: round; stroke-dasharray: 6 7; }
+.folio-collageOrbit circle { fill: var(--folio-olive); stroke: none; }
+.folio-collageType { position: absolute; inset: 0; pointer-events: none; }
+.folio-collageWord { position: absolute; font-family: var(--font-display); font-weight: 400; letter-spacing: -0.04em; line-height: 1; font-variation-settings: "SOFT" 100, "WONK" 1; }
+.folio-collageWordData { top: 2%; left: 1%; rotate: -12deg; font-size: clamp(92px, 9vw, 130px); color: var(--folio-olive); }
+.folio-collageWordData > span { color: var(--folio-rose); }
+.folio-collageWordBusiness { right: -1%; top: 48%; z-index: 3; rotate: 10deg; font-size: clamp(58px, 6vw, 84px); font-style: italic; color: var(--folio-rose); }
+.folio-collageCuriosity { position: absolute; top: 20%; right: -2%; max-width: 130px; rotate: 8deg; font-family: var(--font-display); font-size: 21px; line-height: 1.2; color: var(--folio-olive); }
+.folio-portrait { position: absolute; left: 23%; top: 13%; width: 54%; max-width: 280px; margin: 0; z-index: 2; padding: 10px 10px 0; background: var(--folio-cream); box-shadow: 3px 16px 30px -16px #40332f55; }
+.folio-portraitWindow { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e2d8c8; animation: portrait-reveal 900ms var(--ease-expo) both; }
+.folio-portraitImage { object-fit: cover; object-position: center 38%; }
+.folio-portrait figcaption { display: flex; flex-direction: column; gap: 2px; padding: 12px 2px 14px; font-size: 11px; line-height: 1.4; }
+.folio-portrait figcaption > span { font-size: 10px; color: var(--folio-muted); }
+.folio-portraitPending { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; background: #ded5c3; }
+.folio-portraitPending > span { color: var(--folio-olive); font-family: var(--font-display); font-size: clamp(64px, 7vw, 104px); line-height: 1.2; letter-spacing: -0.04em; }
+.folio-portraitPending i { color: var(--folio-rose); font-style: normal; }
+.folio-portraitPending p { margin-top: 12px; color: var(--folio-ink); font-size: 11px; }
+.folio-collageFlower { position: absolute; z-index: 3; top: 4%; right: 7%; width: 70px; color: var(--folio-rose); rotate: 12deg; }
+.folio-collageFlower svg { display: block; width: 100%; animation: flower-sway 8s ease-in-out infinite; }
+.folio-collageBars { position: absolute; left: 0; top: 51%; width: 110px; height: 100px; display: flex; align-items: flex-end; gap: 8px; rotate: -12deg; z-index: 3; }
+.folio-collageBars > span { width: 21px; height: 34%; background: var(--folio-olive); border-radius: 12px 12px 3px 3px; }
+.folio-collageBars > span:nth-child(2) { height: 56%; background: var(--folio-rose); }
+.folio-collageBars > span:nth-child(3) { height: 83%; }
+.folio-collageBars svg { position: absolute; width: 88px; top: -16px; left: -4px; stroke: var(--folio-ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.folio-collageNote { position: absolute; bottom: 3%; left: 0; width: 185px; rotate: -6deg; font-family: var(--font-display); font-size: 20px; line-height: 1.35; }
+.folio-collageAtlas { position: absolute; bottom: 0; right: 0; z-index: 5; width: 45%; }
+.folio-collageAtlas summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; padding: 8px 0; border-block: 1px solid var(--folio-rule); list-style: none; font-family: var(--font-display); font-size: 23px; }
+.folio-collageAtlas summary::-webkit-details-marker { display: none; }
+.folio-collageAtlas summary small { display: block; margin-top: 3px; color: var(--folio-muted); font-family: var(--font-sans); font-size: 11px; }
+.folio-atlasToggle { font-family: var(--font-sans); font-size: 25px; transition: transform 200ms var(--ease-expo); }
+.folio-collageAtlas[open] .folio-atlasToggle { transform: rotate(45deg); }
+.folio-collageAtlas summary:hover { color: var(--folio-rose); }
+.folio-collageAtlas .folio-atlas { position: absolute; right: 0; bottom: calc(100% + 12px); width: min(440px, calc(100vw - 44px)); padding: 18px; box-shadow: 0 12px 36px -12px #40332f50; }
+.folio-collageAtlas .folio-regions { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; padding-top: 0; }
+.folio-collageAtlas .folio-region { grid-column: var(--column); grid-row: var(--row); min-height: 44px; }
+.folio-collageAtlas .folio-regionCaption { margin-top: 8px; }
+.folio-collageAtlas .folio-regionHint { display: none; }
+.folio-collageAtlas summary:focus-visible { outline: 2px solid var(--folio-rose); outline-offset: 5px; }
+@keyframes portrait-reveal { from { clip-path: inset(0 0 14% 0); transform: scale(1.045); } to { clip-path: inset(0); transform: scale(1); } }
+@keyframes collage-enter { from { opacity: 0.5; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes flower-sway { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(14deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .folio-collageWordData { animation: collage-enter 800ms 80ms var(--ease-expo) both; }
+  .folio-collageWordBusiness { animation: collage-enter 800ms 180ms var(--ease-expo) both; }
+  .folio-collageBars, .folio-collageCuriosity { animation: collage-enter 700ms 300ms var(--ease-expo) both; }
+}
+@media (max-width: 1199px) {
+  .folio-collage { height: 510px; }
+  .folio-collageCuriosity { right: -1%; max-width: 95px; font-size: 19px; }
+  .folio-collageWordBusiness { top: 47%; }
+  .folio-collageNote { width: 155px; font-size: 18px; }
+}
+@media (min-width: 700px) and (max-width: 899px) {
+  .folio-heroGrid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .folio-collage { height: 430px; }
+  .folio-collageWordData { font-size: 85px; }
+  .folio-collageWordBusiness { top: 48%; font-size: 56px; }
+  .folio-collageCuriosity { top: 14%; right: -2%; font-size: 16px; max-width: 80px; }
+  .folio-collageFlower { width: 48px; top: 0; }
+  .folio-collageBars { width: 75px; height: 70px; gap: 5px; top: 48%; }
+  .folio-collageBars > span { width: 16px; }
+  .folio-collageNote { width: 125px; font-size: 17px; }
+  .folio-collageAtlas summary { font-size: 20px; }
+}
+@media (max-width: 699px) {
+  .folio-heroGrid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .folio-collage { height: auto; aspect-ratio: 0.8; width: 100%; max-width: 440px; margin: 0 auto; }
+  .folio-collageWordData { font-size: clamp(85px, 25vw, 115px); }
+  .folio-collageWordBusiness { top: 49%; right: 0; font-size: clamp(55px, 16vw, 75px); }
+  .folio-collageCuriosity { top: 18%; right: 0; max-width: 90px; font-size: 18px; }
+  .folio-collageFlower { width: 55px; right: 8%; top: 3%; }
+  .folio-collageBars { width: 80px; height: 76px; gap: 6px; }
+  .folio-collageBars > span { width: 18px; }
+  .folio-collageNote { bottom: 0; font-size: 18px; width: 145px; }
+  .folio-collageAtlas { bottom: -2%; }
+  .folio-collageAtlas summary { font-size: 21px; }
+  .folio-collageAtlas .folio-atlas { width: min(440px, calc(100vw - 44px)); }
+  .folio-collageAtlas .folio-regions { grid-template-columns: repeat(5, minmax(44px, 1fr)); }
+  .folio-collageAtlas .folio-region { grid-column: auto; grid-row: auto; }
+  .folio-portraitPending > span { font-size: clamp(64px, 19vw, 90px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folio-collage *, .folio-collage *::before, .folio-collage *::after { animation: none !important; transition: none !important; }
+}

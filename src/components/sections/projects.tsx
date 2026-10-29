@@ -1,19 +1,33 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { projects, projectsSection, projectPresentation, type Project } from "@/content/site";
 import { MaybeLink, Text } from "@/components/ui";
 import "@/components/folio.css";
+import "@/components/projects-collage.css";
+
+function DataBar({ height, index, progress }: { height: number; index: number; progress: MotionValue<number> }) {
+  const scaleY = useTransform(progress, [index * 0.04, 0.68 + index * 0.04], [0.18, 1]);
+  return <motion.rect x={43 + index * 49} y={215 - height} width="29" height={height} rx="2" fill={index === 5 ? "var(--folio-rose)" : "currentColor"} fillOpacity={index === 5 ? 1 : 0.85} style={{ scaleY, originX: 0.5, originY: 1, transformBox: "fill-box" }} />;
+}
+
+function ProjectOrnaments() {
+  return <div className="folio-projectOrnaments" aria-hidden>
+    <svg className="folio-projectOrbit" viewBox="0 0 600 480" fill="none"><ellipse cx="300" cy="245" rx="277" ry="173" transform="rotate(-19 300 245)" /><path d="M48 324Q80 396 160 405m-12-12 15 13-20 2" /><circle cx="542" cy="174" r="5" /></svg>
+    <svg className="folio-projectBloom" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="50" rx="17" ry="46" /><ellipse cx="50" cy="50" rx="17" ry="46" transform="rotate(60 50 50)" /><ellipse cx="50" cy="50" rx="17" ry="46" transform="rotate(120 50 50)" /></g><circle cx="50" cy="50" r="9" fill="var(--folio-cream)" /></svg>
+    <span className="folio-projectConfetti"><i /><i /><i /></span>
+  </div>;
+}
 
 /** Illustrative method diagrams, never presented as screenshots or project results. */
-function Cover({ slug }: { slug: string }) {
+function Cover({ slug, progress }: { slug: string; progress: MotionValue<number> }) {
   if (slug.includes("dashboard")) {
     return (
       <svg viewBox="0 0 420 270" aria-hidden focusable="false">
         {[65, 115, 165, 215].map((y) => <line key={y} x1="32" y1={y} x2="388" y2={y} stroke="currentColor" strokeOpacity="0.14" />)}
-        {[82, 128, 104, 164, 138, 184, 158].map((height, index) => <rect key={index} x={43 + index * 49} y={215 - height} width="29" height={height} rx="2" fill={index === 5 ? "var(--folio-rose)" : "currentColor"} fillOpacity={index === 5 ? 1 : 0.85} />)}
+        {[82, 128, 104, 164, 138, 184, 158].map((height, index) => <DataBar key={index} height={height} index={index} progress={progress} />)}
         <line x1="32" y1="215" x2="388" y2="215" stroke="currentColor" strokeWidth="1.5" />
       </svg>
     );
@@ -23,9 +37,9 @@ function Cover({ slug }: { slug: string }) {
       <svg viewBox="0 0 420 270" aria-hidden focusable="false">
         <line x1="32" y1="219" x2="388" y2="219" stroke="currentColor" strokeOpacity="0.3" />
         <line x1="32" y1="35" x2="32" y2="219" stroke="currentColor" strokeOpacity="0.3" />
-        <path d="M32 219 122 47 212 219" fill="var(--folio-cream)" fillOpacity="0.5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M122 219 212 47 302 219" fill="var(--folio-rose)" fillOpacity="0.15" stroke="var(--folio-rose)" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M212 219 302 47 388 47" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <motion.path style={{ pathLength: progress }} d="M32 219 122 47 212 219" fill="var(--folio-cream)" fillOpacity="0.5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <motion.path style={{ pathLength: progress }} d="M122 219 212 47 302 219" fill="var(--folio-rose)" fillOpacity="0.15" stroke="var(--folio-rose)" strokeWidth="2" strokeLinejoin="round" />
+        <motion.path style={{ pathLength: progress }} d="M212 219 302 47 388 47" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
         <line x1="212" y1="47" x2="212" y2="219" stroke="var(--folio-rose)" strokeOpacity="0.5" strokeDasharray="3 6" />
         <circle cx="212" cy="47" r="5" fill="var(--folio-rose)" />
       </svg>
@@ -35,8 +49,8 @@ function Cover({ slug }: { slug: string }) {
   return (
     <svg viewBox="0 0 420 270" aria-hidden focusable="false">
       {[72, 120, 168, 216].map((y) => <line key={y} x1="32" y1={y} x2="388" y2={y} stroke="currentColor" strokeOpacity="0.12" />)}
-      <path d="M208 30 C182 90 231 170 205 231" fill="none" stroke="currentColor" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="4 6" />
-      {points.map(([x, y], index) => <circle key={index} cx={x} cy={y} r="7" fill={index < 6 ? "var(--folio-cream)" : "var(--folio-blush)"} />)}
+      <motion.path style={{ pathLength: progress }} d="M208 30 C182 90 231 170 205 231" fill="none" stroke="currentColor" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="4 6" />
+      {points.map(([x, y], index) => <motion.circle key={index} cx={x} cy={y} r="7" fill={index < 6 ? "var(--folio-cream)" : "var(--folio-blush)"} style={{ scale: progress, transformBox: "fill-box", transformOrigin: "center" }} />)}
       <line x1="32" y1="231" x2="388" y2="231" stroke="currentColor" strokeOpacity="0.5" />
     </svg>
   );
@@ -60,27 +74,32 @@ function ProjectRow({ project: p, index }: { project: Project; index: number }) 
   const article = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: article, offset: ["start end", "end start"] });
-  const figureY = useTransform(scrollYProgress, [0, 1], [16, -16]);
-  const figureRotate = useTransform(scrollYProgress, [0, 1], index % 2 ? [1.2, -1.2] : [-1.2, 1.2]);
+  const smoothScroll = useSpring(scrollYProgress, { stiffness: 90, damping: 26, restDelta: 0.001 });
+  const figureY = useTransform(smoothScroll, [0, 1], [36, -36]);
+  const figureRotate = useTransform(smoothScroll, [0, 0.6, 1], index % 2 ? [7, 2, -1] : [-7, -2, 1]);
+  const progress = useTransform(smoothScroll, [0.08, 0.58], [reduce ? 1 : 0.2, 1]);
+  const ornamentRotate = useTransform(smoothScroll, [0, 1], [-12, 24]);
+  const copyY = useTransform(smoothScroll, [0, 1], [18, -18]);
   const method = projectPresentation.methods[index];
   return (
     <article ref={article} aria-labelledby={`${p.slug}-title`} className="folio-projectRow" data-reversed={index % 2 === 1}>
       <figure className="folio-projectFigure">
+        <motion.div className="folio-projectDecoration" style={{ rotate: reduce ? 0 : ornamentRotate }}><ProjectOrnaments /></motion.div>
         <motion.div className="folio-projectPlate" data-method={index} style={{ y: reduce ? 0 : figureY, rotate: reduce ? 0 : figureRotate }}>
           <div className="folio-projectPlateMeta"><span>{p.number}</span><span>{p.category}</span></div>
-          <Cover slug={p.slug} />
+          <Cover slug={p.slug} progress={progress} />
           <p className="folio-projectMethod">{method}</p>
         </motion.div>
         <figcaption>{projectPresentation.diagramCaption}</figcaption>
       </figure>
-      <div className="folio-projectCopy">
+      <motion.div className="folio-projectCopy" style={{ y: reduce ? 0 : copyY }}>
         <p className="folio-projectCategory">{p.category}</p>
         <h3 id={`${p.slug}-title`}>{p.title}</h3>
         <p className="folio-projectSummary"><Text value={p.summary} /></p>
         <ul aria-label="Tech stack" className="folio-projectStack">{p.stack.map((item, itemIndex) => <li key={itemIndex}><Text value={item} /></li>)}</ul>
         <CaseStudy p={p} />
         <div className="folio-projectLinks">{p.links.map((link) => <MaybeLink key={link.label} link={link} className="text-link">{link.label}<ArrowUpRight aria-hidden size={16} /></MaybeLink>)}</div>
-      </div>
+      </motion.div>
     </article>
   );
 }
@@ -88,7 +107,7 @@ function ProjectRow({ project: p, index }: { project: Project; index: number }) 
 export function Projects() {
   const headingParts = projectsSection.heading.split(/\*([^*]+)\*/);
   return (
-    <section id="projects" aria-labelledby="projects-title" className="folio-projects">
+    <section id="projects" aria-labelledby="projects-title" className="folio-projects folio-projectsCollage">
       <div className="folio-projectsInner">
         <div className="folio-projectsIntro">
           <h2 id="projects-title">{headingParts.map((part, index) => index % 2 ? <span className="folio-projectsAccent" key={index}>{part}</span> : <span key={index}>{part}</span>)}</h2>
