@@ -1,17 +1,15 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
+import Image from "next/image";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Plus } from "lucide-react";
-import { projects, projectsSection, projectPresentation, type Project } from "@/content/site";
+import { projects, projectsSection, type Project } from "@/content/site";
 import { MaybeLink, Text } from "@/components/ui";
 import "@/components/folio.css";
 import "@/components/projects-collage.css";
-
-function DataBar({ height, index, progress }: { height: number; index: number; progress: MotionValue<number> }) {
-  const scaleY = useTransform(progress, [index * 0.04, 0.68 + index * 0.04], [0.18, 1]);
-  return <motion.rect x={43 + index * 49} y={215 - height} width="29" height={height} rx="2" fill={index === 5 ? "var(--folio-rose)" : "currentColor"} fillOpacity={index === 5 ? 1 : 0.85} style={{ scaleY, originX: 0.5, originY: 1, transformBox: "fill-box" }} />;
-}
 
 function ProjectOrnaments() {
   return <div className="folio-projectOrnaments" aria-hidden>
@@ -21,40 +19,11 @@ function ProjectOrnaments() {
   </div>;
 }
 
-/** Illustrative method diagrams, never presented as screenshots or project results. */
-function Cover({ slug, progress }: { slug: string; progress: MotionValue<number> }) {
-  if (slug.includes("dashboard")) {
-    return (
-      <svg viewBox="0 0 420 270" aria-hidden focusable="false">
-        {[65, 115, 165, 215].map((y) => <line key={y} x1="32" y1={y} x2="388" y2={y} stroke="currentColor" strokeOpacity="0.14" />)}
-        {[82, 128, 104, 164, 138, 184, 158].map((height, index) => <DataBar key={index} height={height} index={index} progress={progress} />)}
-        <line x1="32" y1="215" x2="388" y2="215" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    );
-  }
-  if (slug.includes("fuzzy")) {
-    return (
-      <svg viewBox="0 0 420 270" aria-hidden focusable="false">
-        <line x1="32" y1="219" x2="388" y2="219" stroke="currentColor" strokeOpacity="0.3" />
-        <line x1="32" y1="35" x2="32" y2="219" stroke="currentColor" strokeOpacity="0.3" />
-        <motion.path style={{ pathLength: progress }} d="M32 219 122 47 212 219" fill="var(--folio-cream)" fillOpacity="0.5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <motion.path style={{ pathLength: progress }} d="M122 219 212 47 302 219" fill="var(--folio-rose)" fillOpacity="0.15" stroke="var(--folio-rose)" strokeWidth="2" strokeLinejoin="round" />
-        <motion.path style={{ pathLength: progress }} d="M212 219 302 47 388 47" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-        <line x1="212" y1="47" x2="212" y2="219" stroke="var(--folio-rose)" strokeOpacity="0.5" strokeDasharray="3 6" />
-        <circle cx="212" cy="47" r="5" fill="var(--folio-rose)" />
-      </svg>
-    );
-  }
-  const points = [[62, 74], [89, 108], [74, 162], [121, 62], [113, 148], [154, 111], [253, 150], [294, 95], [335, 172], [286, 205], [355, 117], [231, 194]];
-  return (
-    <svg viewBox="0 0 420 270" aria-hidden focusable="false">
-      {[72, 120, 168, 216].map((y) => <line key={y} x1="32" y1={y} x2="388" y2={y} stroke="currentColor" strokeOpacity="0.12" />)}
-      <motion.path style={{ pathLength: progress }} d="M208 30 C182 90 231 170 205 231" fill="none" stroke="currentColor" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="4 6" />
-      {points.map(([x, y], index) => <motion.circle key={index} cx={x} cy={y} r="7" fill={index < 6 ? "var(--folio-cream)" : "var(--folio-blush)"} style={{ scale: progress, transformBox: "fill-box", transformOrigin: "center" }} />)}
-      <line x1="32" y1="231" x2="388" y2="231" stroke="currentColor" strokeOpacity="0.5" />
-    </svg>
-  );
-}
+const projectImages = [
+  { src: "/images/project-dashboard.jpg", alt: "Regional financial dashboard with charts and a map of West Java", caption: "Regional financial analytics dashboard" },
+  { src: "/images/project-scholarship.jpg", alt: "Scholarship selection system model performance and confusion matrix", caption: "Scholarship selection model performance" },
+  { src: "/images/project-classification.jpeg", alt: "Published article on poverty classification in Indonesia using machine learning", caption: "Poverty classification research article" },
+];
 
 function CaseStudy({ p }: { p: Project }) {
   return (
@@ -72,25 +41,23 @@ function CaseStudy({ p }: { p: Project }) {
 
 function ProjectRow({ project: p, index }: { project: Project; index: number }) {
   const article = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: article, offset: ["start end", "end start"] });
   const smoothScroll = useSpring(scrollYProgress, { stiffness: 90, damping: 26, restDelta: 0.001 });
   const figureY = useTransform(smoothScroll, [0, 1], [36, -36]);
   const figureRotate = useTransform(smoothScroll, [0, 0.6, 1], index % 2 ? [7, 2, -1] : [-7, -2, 1]);
-  const progress = useTransform(smoothScroll, [0.08, 0.58], [reduce ? 1 : 0.2, 1]);
   const ornamentRotate = useTransform(smoothScroll, [0, 1], [-12, 24]);
   const copyY = useTransform(smoothScroll, [0, 1], [18, -18]);
-  const method = projectPresentation.methods[index];
+  const image = projectImages[index];
   return (
     <article ref={article} aria-labelledby={`${p.slug}-title`} className="folio-projectRow" data-reversed={index % 2 === 1}>
       <figure className="folio-projectFigure">
         <motion.div className="folio-projectDecoration" style={{ rotate: reduce ? 0 : ornamentRotate }}><ProjectOrnaments /></motion.div>
         <motion.div className="folio-projectPlate" data-method={index} style={{ y: reduce ? 0 : figureY, rotate: reduce ? 0 : figureRotate }}>
           <div className="folio-projectPlateMeta"><span>{p.number}</span><span>{p.category}</span></div>
-          <Cover slug={p.slug} progress={progress} />
-          <p className="folio-projectMethod">{method}</p>
+          <div className="folio-projectImage"><Image src={image.src} alt={image.alt} fill sizes="(max-width: 599px) 85vw, (max-width: 899px) 45vw, 500px" /></div>
         </motion.div>
-        <figcaption>{projectPresentation.diagramCaption}</figcaption>
+        <figcaption>{image.caption}</figcaption>
       </figure>
       <motion.div className="folio-projectCopy" style={{ y: reduce ? 0 : copyY }}>
         <p className="folio-projectCategory">{p.category}</p>

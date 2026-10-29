@@ -1,7 +1,9 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { Brain, Compass, MessagesSquare, Palette } from "lucide-react";
 import { about, person } from "@/content/site";
 import "@/components/folio.css";
@@ -44,7 +46,7 @@ function CuriosityArtwork() {
 export function About() {
   const section = useRef<HTMLElement>(null);
   const entered = useInView(section, { once: true, amount: 0.15 });
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] });
   const noteY = useTransform(scrollYProgress, [0, 1], [18, -18]);
   const headingParts = about.heading.split(/\*([^*]+)\*/);

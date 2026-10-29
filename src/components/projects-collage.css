@@ -83,3 +83,7 @@
   .folio-projectsCollage *, .folio-projectsCollage *::before, .folio-projectsCollage *::after { animation: none !important; transition: none !important; }
   .folio-projectsCollage .folio-projectFigure { position: relative; top: auto; }
 }
+
+/* Screenshots share a frame while retaining their original proportions. */
+.folio-projectsCollage .folio-projectImage { position: relative; aspect-ratio: 4 / 3; margin-top: 20px; background: #fff; overflow: hidden; }
+.folio-projectsCollage .folio-projectImage img { object-fit: contain; }

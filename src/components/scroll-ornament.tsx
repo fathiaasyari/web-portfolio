@@ -1,12 +1,14 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 
 /** Decorative geometry shares one gentle scroll rhythm across the portfolio. */
 export function ScrollOrnament({ variant, className = "" }: { variant: "growth" | "tools" | "bloom" | "letter"; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const progress = useSpring(scrollYProgress, { stiffness: 80, damping: 25 });
   const rotate = useTransform(progress, [0, 1], [-12, 22]);

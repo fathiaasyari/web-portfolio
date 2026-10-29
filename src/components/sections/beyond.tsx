@@ -1,7 +1,9 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { beyond } from "@/content/site";
 import { Text } from "@/components/ui";
 import { ScrollOrnament } from "@/components/scroll-ornament";
@@ -10,7 +12,7 @@ import "@/components/folio-finishing.css";
 
 export function Beyond() {
   const section = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] });
   const noteY = useTransform(scrollYProgress, [0, 1], [14, -14]);
   const noteRotate = useTransform(scrollYProgress, [0, 1], [-1.5, 1]);

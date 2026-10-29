@@ -14,7 +14,7 @@
 .folio-collageCuriosity { position: absolute; top: 20%; right: -2%; max-width: 130px; rotate: 8deg; font-family: var(--font-display); font-size: 21px; line-height: 1.2; color: var(--folio-olive); }
 .folio-portrait { position: absolute; left: 23%; top: 13%; width: 54%; max-width: 280px; margin: 0; z-index: 2; padding: 10px 10px 0; background: var(--folio-cream); box-shadow: 3px 16px 30px -16px #40332f55; }
 .folio-portraitWindow { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e2d8c8; animation: portrait-reveal 900ms var(--ease-expo) both; }
-.folio-portraitImage { object-fit: cover; object-position: center 38%; }
+.folio-portraitImage { object-fit: cover; object-position: center bottom; transform: scale(1.2); transform-origin: 40% 55%; }
 .folio-portrait figcaption { display: flex; flex-direction: column; gap: 2px; padding: 12px 2px 14px; font-size: 11px; line-height: 1.4; }
 .folio-portrait figcaption > span { font-size: 10px; color: var(--folio-muted); }
 .folio-portraitPending { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 20px; background: #ded5c3; }

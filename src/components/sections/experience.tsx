@@ -1,7 +1,9 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { ScrollOrnament } from "@/components/scroll-ornament";
 import { experience, experienceSection } from "@/content/site";
 import { Text } from "@/components/ui";
@@ -10,7 +12,7 @@ import "@/components/folio-finishing.css";
 
 export function Experience() {
   const section = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start 85%", "end 70%"] });
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 26 });
   const readingProgress = useTransform(smoothProgress, [0, 1], [0, 1]);

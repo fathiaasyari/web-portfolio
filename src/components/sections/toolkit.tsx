@@ -1,7 +1,9 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { toolkit, toolkitSection } from "@/content/site";
 import { Text } from "@/components/ui";
 import { ScrollOrnament } from "@/components/scroll-ornament";
@@ -10,7 +12,7 @@ import "@/components/folio-finishing.css";
 
 export function Toolkit() {
   const section = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] });
   const headingY = useTransform(scrollYProgress, [0, 1], [12, -12]);
   const headingParts = toolkitSection.heading.split(/\*([^*]+)\*/);

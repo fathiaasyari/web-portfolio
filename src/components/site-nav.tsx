@@ -1,7 +1,9 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { cv, nav, person, headerPresentation } from "@/content/site";
 import "@/components/folio.css";
@@ -10,7 +12,7 @@ export function SiteNav() {
   const [active, setActive] = useState<string>("home");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const toggle = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
 

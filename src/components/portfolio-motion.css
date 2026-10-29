@@ -1,0 +1,132 @@
+/* Motion only: the approved composition, spacing and palette stay intact. */
+/* Transforms create stacking contexts: keep the foreground word above the photo. */
+.folio-collageForeground { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .folio-heroStage .folio-greeting {
+    animation: folio-soft-arrival 650ms 40ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-nameLetters { animation-duration: 1000ms; }
+  .folio-heroStage .folio-fullName {
+    animation: folio-soft-arrival 650ms 160ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-heroActions,
+  .folio-heroStage .folio-availability {
+    animation: folio-soft-arrival 700ms 280ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-heroCopy { animation: none; }
+  .folio-heroStage .folio-professionLines > span {
+    animation: folio-type-unfold 850ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-professionLines > span:nth-child(2) { animation-delay: 100ms; }
+  .folio-heroStage .folio-professionLines > span:nth-child(3) { animation-delay: 200ms; }
+  .folio-heroStage .folio-lede {
+    animation: folio-soft-arrival 700ms 320ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-portraitWindow {
+    animation: folio-portrait-unfold 1100ms 100ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-collageWordData {
+    animation: folio-collage-arrival 950ms 60ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-collageWordBusiness {
+    animation: folio-collage-arrival 950ms 200ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-collageBars > span {
+    transform-origin: center bottom;
+    animation: folio-bar-arrival 900ms 220ms var(--ease-expo) both;
+  }
+  .folio-heroStage .folio-collageBars > span:nth-child(2) { animation-delay: 300ms; }
+  .folio-heroStage .folio-collageBars > span:nth-child(3) { animation-delay: 380ms; }
+  #main[data-motion-ready] .folio-aboutHeading,
+  #main[data-motion-ready] .folio-contactHeadingRow h2 { animation: none; }
+
+  #main .folio-collageFlower svg,
+  #main .folio-curiosityBloom { animation-play-state: paused; }
+  #main[data-motion-paused="false"] .folio-collage[data-motion-visible="true"] .folio-collageFlower svg,
+  #main[data-motion-paused="false"] .folio-about[data-motion-visible="true"] .folio-curiosityBloom {
+    animation-play-state: running;
+  }
+
+  @supports (animation-timeline: view()) {
+    /* The colored pages open edge-to-edge as the reader enters them. */
+    #main .folio-experience,
+    #main .folio-contact {
+      animation: folio-page-unfold auto var(--ease-soft) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    #main .folio-projectFigure::before {
+      animation: folio-paper-drift auto var(--ease-soft) both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    #main .folio-projectsAccent::after {
+      transform-origin: left;
+      animation: folio-ink-draw auto var(--ease-expo) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .folio-workLink svg,
+    .folio-contactLink svg,
+    .folio-projectLinks a svg,
+    .folio-socialLink svg {
+      transition: transform 240ms var(--ease-expo);
+    }
+    .folio-workLink:hover svg,
+    .folio-contactLink:hover svg,
+    .folio-projectLinks a:hover svg,
+    .folio-socialLink:hover svg { transform: translate(3px, -3px); }
+    .folio-workLink:active { scale: 0.98; }
+  }
+}
+
+@keyframes folio-soft-arrival {
+  from { opacity: 0.35; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes folio-type-unfold {
+  from { clip-path: inset(0 -10% 100% -10%); transform: translateY(22px); }
+  to { clip-path: inset(-15% -10% -15% -10%); transform: translateY(0); }
+}
+@keyframes folio-portrait-unfold {
+  from { clip-path: inset(0 0 24% 0); transform: scale(1.08); }
+  to { clip-path: inset(0); transform: scale(1); }
+}
+@keyframes folio-collage-arrival {
+  from { opacity: 0.4; transform: translateY(30px) rotate(-5deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+@keyframes folio-bar-arrival {
+  from { transform: scaleY(0.15); }
+  to { transform: scaleY(1); }
+}
+@keyframes folio-page-unfold {
+  from { clip-path: inset(0 2.8% 0 round 52px 52px 0 0); }
+  to { clip-path: inset(0 0 0 round 0px); }
+}
+@keyframes folio-paper-drift {
+  from { transform: translateY(16px) rotate(-3deg) scale(0.95); }
+  to { transform: translateY(-16px) rotate(3deg) scale(1.03); }
+}
+@keyframes folio-ink-draw {
+  from { transform: scaleX(0.15); }
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 699px) and (prefers-reduced-motion: no-preference) {
+  @keyframes folio-page-unfold {
+    from { clip-path: inset(0 1.5% 0 round 24px 24px 0 0); }
+    to { clip-path: inset(0 0 0 round 0px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #main .folio-experience,
+  #main .folio-contact,
+  #main .folio-projectFigure::before,
+  #main .folio-projectsAccent::after { animation: none; clip-path: none; }
+}

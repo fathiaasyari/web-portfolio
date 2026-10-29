@@ -3,8 +3,8 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr) minmax(0, 1fr);
   grid-template-areas: "identity art story";
   gap: 28px;
-  min-height: 660px;
-  padding: 30px 0 65px;
+  min-height: calc(100svh - 100px);
+  padding: 16px 0 24px;
   align-items: center;
 }
 .folio-heroStage .folio-introduction { grid-area: identity; position: relative; z-index: 2; padding-bottom: 50px; }
@@ -24,9 +24,17 @@
 .folio-heroStage .folio-professionLines > span:last-child { margin-left: 20px; }
 .folio-heroStage .folio-lede { margin: 0 0 0 12px; max-width: 260px; font-size: 13px; line-height: 1.85; rotate: 2deg; }
 .folio-heroStage .folio-collage { grid-area: art; justify-self: center; }
-@media (min-width: 1600px) { .folio-heroStage { min-height: 700px; } }
+@media (min-width: 1100px) {
+  .folio-heroInner { padding-top: 100px; }
+  .folio-heroStage .folio-collage {
+    width: min(100%, 520px, calc((100svh - 160px) * 0.945));
+    height: auto;
+    aspect-ratio: 520 / 550;
+  }
+  .folio-heroStage .folio-portrait { max-width: min(280px, 54%); }
+}
 @media (min-width: 700px) and (max-width: 1099px) {
-  .folio-heroStage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "identity story" "art art"; column-gap: 60px; row-gap: 0; padding-top: 10px; }
+  .folio-heroStage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "identity story" "art art"; min-height: auto; column-gap: 60px; row-gap: 0; padding-top: 10px; }
   .folio-heroStage .folio-introduction { padding: 0 0 25px 12px; }
   .folio-heroStage .folio-nameLetters { font-size: 160px; }
   .folio-heroStage .folio-heroActions { margin-top: 30px; flex-direction: row; align-items: center; flex-wrap: wrap; }

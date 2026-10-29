@@ -1,5 +1,5 @@
 /* Shared identity across the portfolio. */
-.folio-header, .folio-hero, .folio-about, .folio-experience, .folio-projects, .folio-toolkit, .folio-beyond, .folio-contact, .folio-footer {
+.folio-header, .folio-hero, .folio-about, .folio-experience, .folio-projects, .folio-toolkit, .folio-beyond, .folio-activity, .folio-contact, .folio-footer {
   --folio-cream: #f8f3e9;
   --folio-ink: #40332f;
   --folio-muted: #73645c;

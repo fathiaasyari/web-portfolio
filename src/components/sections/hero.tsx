@@ -1,8 +1,10 @@
 "use client";
 
+import { useMotionPreference } from "@/components/use-motion-preference";
+
 import { useRef, useState, type PointerEvent } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Download } from "lucide-react";
 import { cv, hero, person, photo } from "@/content/site";
 import { WestJavaMap } from "@/components/west-java-map";
@@ -12,7 +14,8 @@ import "@/components/hero-stage.css";
 
 export function Hero() {
   const section = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const collage = useRef<HTMLDivElement>(null);
+  const reduce = useMotionPreference();
   const [photoFailed, setPhotoFailed] = useState(false);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -30,6 +33,18 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: section, offset: ["start start", "end start"] });
   const artY = useTransform(scrollYProgress, [0, 1], [0, -64]);
   const nameY = useTransform(scrollYProgress, [0, 1], [0, 28]);
+  // Track the collage itself so the mobile artwork starts moving only on arrival.
+  const { scrollYProgress: collageProgress } = useScroll({ target: collage, offset: ["start start", "end start"] });
+  const collageScroll = useSpring(collageProgress, { stiffness: 100, damping: 30 });
+  const portraitScrollY = useTransform(collageScroll, [0, 1], [0, -55]);
+  const portraitScrollRotate = useTransform(collageScroll, [0, 1], [0, -5]);
+  const portraitY = useTransform(() => y.get() + portraitScrollY.get());
+  const portraitRotate = useTransform(() => rotate.get() + portraitScrollRotate.get());
+  const typeScrollY = useTransform(collageScroll, [0, 1], [0, 36]);
+  const typeY = useTransform(() => counterY.get() + typeScrollY.get());
+  const flowerY = useTransform(collageScroll, [0, 1], [0, -85]);
+  const flowerRotate = useTransform(collageScroll, [0, 1], [0, 58]);
+  const washScale = useTransform(collageScroll, [0, 1], [1, 0.9]);
 
   return (
     <section ref={section} id="home" aria-labelledby="hero-title" className={"folio-hero"}>
@@ -59,19 +74,21 @@ export function Hero() {
             </p>
             <p className="folio-lede">{hero.lede}</p>
           </div>
-          <motion.div className="folio-visual folio-collage" style={{ y: reduce ? 0 : artY }} onPointerMove={moveArt} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
-            <div aria-hidden className="folio-collageWash" />
+          <motion.div ref={collage} className="folio-visual folio-collage" style={{ y: reduce ? 0 : artY }} onPointerMove={moveArt} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
+            <motion.div aria-hidden className="folio-collageWash" style={{ scale: reduce ? 1 : washScale }} />
             <svg aria-hidden className="folio-collageOrbit" viewBox="0 0 520 540" fill="none">
               <ellipse cx="260" cy="260" rx="235" ry="171" transform="rotate(-32 260 260)" />
               <path d="M65 378C10 256 116 71 322 69M427 106l17 6-6-17" />
               <circle cx="69" cy="368" r="5" />
             </svg>
-            <motion.div aria-hidden className="folio-collageType" style={{ x: reduce ? 0 : counterX, y: reduce ? 0 : counterY }}>
+            <motion.div aria-hidden className="folio-collageType" style={{ x: reduce ? 0 : counterX, y: reduce ? 0 : typeY }}>
               <span className="folio-collageWord folio-collageWordData">{hero.collageWords[0]}<span>.</span></span>
-              <span className="folio-collageWord folio-collageWordBusiness">{hero.collageWords[1]}</span>
               <span className="folio-collageCuriosity">{hero.collageWords[2]}</span>
             </motion.div>
-            <motion.figure className="folio-portrait" style={{ x: reduce ? 0 : x, y: reduce ? 0 : y, rotate: reduce ? 0 : rotate }}>
+            <motion.div aria-hidden className="folio-collageForeground" style={{ x: reduce ? 0 : counterX, y: reduce ? 0 : typeY }}>
+              <span className="folio-collageWord folio-collageWordBusiness">{hero.collageWords[1]}</span>
+            </motion.div>
+            <motion.figure className="folio-portrait" style={{ x: reduce ? 0 : x, y: reduce ? 0 : portraitY, rotate: reduce ? 0 : portraitRotate }}>
               <div className="folio-portraitWindow">
                 {photo.src && !photoFailed ? (
                   <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 699px) 65vw, (max-width: 1023px) 30vw, 300px" preload className="folio-portraitImage" onError={() => setPhotoFailed(true)} />
@@ -81,7 +98,7 @@ export function Hero() {
               </div>
               <figcaption>{person.fullName}<span>{person.interests[0]}</span></figcaption>
             </motion.figure>
-            <div aria-hidden className="folio-collageFlower"><svg viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="50" rx="18" ry="48" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(60 50 50)" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(120 50 50)" /></g><circle cx="50" cy="50" r="10" fill="var(--folio-cream)" /></svg></div>
+            <motion.div aria-hidden className="folio-collageFlower" style={{ y: reduce ? 0 : flowerY, rotate: reduce ? 0 : flowerRotate }}><svg viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="50" rx="18" ry="48" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(60 50 50)" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(120 50 50)" /></g><circle cx="50" cy="50" r="10" fill="var(--folio-cream)" /></svg></motion.div>
             <div aria-hidden className="folio-collageBars"><span /><span /><span /><svg viewBox="0 0 100 70" fill="none"><path d="M8 58Q43 62 78 12M60 14l20-5 3 21" /></svg></div>
             <p className="folio-collageNote">{hero.atlasNote}</p>
             <details className="folio-collageAtlas">
