@@ -70,6 +70,7 @@ export function About() {
             <div className="folio-aboutProse">
               <p className="folio-aboutLead">{about.paragraphs[0]}</p>
               <p>{about.paragraphs[1]}</p>
+              <p>{about.paragraphs[3]}</p>
             </div>
             <ul className="folio-aboutTraits">
               {about.traits.map((trait) => {

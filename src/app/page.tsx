@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
+import { MoreProjects } from "@/components/sections/more-projects";
 import { Toolkit } from "@/components/sections/toolkit";
 import { Beyond } from "@/components/sections/beyond";
 import { Activity } from "@/components/sections/activity";
@@ -23,6 +24,7 @@ export default function Home() {
         <About />
         <Experience />
         <Projects />
+        <MoreProjects />
         <Toolkit />
         <Beyond />
         <Activity />

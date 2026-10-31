@@ -1,0 +1,26 @@
+.folio-moreProjects { background: var(--folio-cream); }
+.folio-moreProjectsInner { max-width: 1280px; margin: auto; padding: 32px 48px 96px; }
+.folio-moreProjectsIntro { max-width: 760px; margin-bottom: 48px; }
+.folio-moreProjectsIntro h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 400; line-height: 1.12; letter-spacing: -0.03em; text-wrap: balance; }
+.folio-moreProjectsIntro > p { margin-top: 24px; max-width: 65ch; color: var(--folio-muted); font-size: 16px; line-height: 1.8; }
+.folio-moreProjectsList { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--folio-rule); }
+.folio-moreProjectsList > li { border-top: 1px solid var(--folio-rule); }
+.folio-moreProject { display: grid; grid-template-columns: 44px minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 32px; padding: 36px 0; }
+.folio-moreProjectNumber { color: var(--folio-rose); font-family: var(--font-display); font-size: 26px; font-style: italic; line-height: 1.25; }
+.folio-moreProjectIdentity h3 { max-width: 25ch; font-size: clamp(24px, 2.2vw, 30px); font-weight: 400; line-height: 1.25; letter-spacing: -0.02em; text-wrap: balance; }
+.folio-moreProjectCategory { margin-top: 14px; color: var(--folio-rose); font-size: 13px; line-height: 1.65; }
+.folio-moreProjectDetail { min-width: 0; color: var(--folio-muted); font-size: 15px; line-height: 1.8; }
+.folio-moreProjectStack { margin-top: 20px; font-size: 13px; }
+.folio-moreProjectStack strong { color: var(--folio-ink); font-weight: 500; }
+@media (max-width: 899px) {
+  .folio-moreProject { grid-template-columns: 36px minmax(0, 1fr); gap: 14px 24px; }
+  .folio-moreProjectDetail { grid-column: 2; }
+  .folio-moreProjectIdentity h3 { max-width: none; }
+}
+@media (max-width: 599px) {
+  .folio-moreProjectsInner { padding: 28px 24px 64px; }
+  .folio-moreProjectsIntro { margin-bottom: 32px; }
+  .folio-moreProjectsIntro > p { font-size: 15px; }
+  .folio-moreProject { gap: 12px 14px; padding: 28px 0; grid-template-columns: 28px minmax(0, 1fr); }
+  .folio-moreProjectNumber { font-size: 23px; }
+}

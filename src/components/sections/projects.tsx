@@ -60,11 +60,12 @@ function ProjectRow({ project: p, index }: { project: Project; index: number }) 
         <figcaption>{image.caption}</figcaption>
       </figure>
       <motion.div className="folio-projectCopy" style={{ y: reduce ? 0 : copyY }}>
-        <p className="folio-projectCategory">{p.category}</p>
+        <p className="folio-projectCategory">{p.highlight}</p>
         <h3 id={`${p.slug}-title`}>{p.title}</h3>
         <p className="folio-projectSummary"><Text value={p.summary} /></p>
         <ul aria-label="Tech stack" className="folio-projectStack">{p.stack.map((item, itemIndex) => <li key={itemIndex}><Text value={item} /></li>)}</ul>
         <CaseStudy p={p} />
+        <p>{p.access}</p>
         <div className="folio-projectLinks">{p.links.map((link) => <MaybeLink key={link.label} link={link} className="text-link">{link.label}<ArrowUpRight aria-hidden size={16} /></MaybeLink>)}</div>
       </motion.div>
     </article>

@@ -120,6 +120,7 @@ export const about = {
     "Computer Science taught me how systems work; data taught me why decisions get made. I enjoy both sides — writing the query or the script, and then sitting with the result long enough to understand what it actually means for the people who need it.",
     "My internship at the Ministry of Finance's regional treasury office in West Java put that into practice: analysing financial data across all 27 districts and cities of the province, and turning it into reports and dashboards that colleagues could read at a glance.",
     "I'm now looking for a team where careful analysis and clear communication matter as much as the tools.",
+    "Beyond my professional experience, I have applied analytical thinking to projects involving unemployment trends, academic competition planning, and decision-support systems, while developing communication and leadership skills through campus organizations.",
   ],
   traits: [
     {
@@ -155,23 +156,25 @@ export const experienceSection = {
 export const experience = [
   {
     role: "Intern" as Copy,
-    roleDetail: todo("Exact internship title (e.g. Data Analyst Intern)"),
+    roleDetail: "PAPK Division (Financial Analysis & Reporting)",
     org: "Kanwil DJPb Provinsi Jawa Barat",
     orgLong:
       "Regional Office of the Directorate General of Treasury, West Java — Ministry of Finance of the Republic of Indonesia",
-    period: "March – June 2025",
+    period: "March – July 2025",
     start: "2025-03",
-    end: "2025-06",
-    highlight: { value: "27", label: "districts & cities analysed across West Java" },
+    end: "2025-07",
+    highlight: { value: "27", label: "West Java regions · 20+ work units" },
     summary:
-      "Supported regional financial analysis for the treasury office, working with data from every district and city in West Java.",
+      "Supported financial data analysis, budget realization monitoring, and reporting activities at the West Java Regional Office of the Directorate General of Treasury, working with regional financial datasets and analytical tools to support internal evaluations.",
     bullets: [
-      "Analysed regional financial data covering all 27 districts and cities in West Java.",
-      "Performed exploratory data analysis (EDA) in Python to profile, clean and understand the datasets.",
-      "Built forecasting analyses to project financial indicators.",
-      "Prepared analytical reports and dashboards to communicate findings to the team.",
+      "Analysed regional financial data across 27 regencies and cities in West Java to identify trends and assess budget allocation.",
+      "Performed exploratory data analysis using Python, Pandas, and NumPy to examine financial indicators and historical patterns.",
+      "Developed an ARIMA-based forecasting model to estimate monthly budget realization trends.",
+      "Created interactive dashboards using Looker Studio and data visualizations to support reporting and internal discussions.",
+      "Reviewed and validated budget realization reports from more than 20 government work units.",
+      "Supported financial anomaly assessments through historical and outlier-pattern analysis.",
     ],
-    tags: ["Python", "EDA", "Forecasting", "Reporting", "Dashboards"],
+    tags: ["Python", "Pandas", "NumPy", "ARIMA", "Looker Studio", "Excel", "Matplotlib", "Seaborn"],
   },
 ];
 
@@ -194,6 +197,8 @@ export type Project = {
   number: string;
   category: string;
   title: string;
+  highlight: string;
+  access: string;
   summary: Copy;
   problem: Copy;
   role: Copy;
@@ -210,70 +215,152 @@ export const projects: Project[] = [
     number: "01",
     category: "Analytics · Dashboard",
     title: "Regional Financial Analytics Dashboard",
-    summary: draft(
-      "A dashboard that brings regional financial data into one view so trends and differences between areas are easy to compare."
-    ),
-    problem: draft(
-      "Regional financial data is spread across many areas and periods, which makes it slow to compare performance and spot trends without a consolidated view."
-    ),
-    role: todo("Your role — e.g. sole analyst, data prep + dashboard design"),
+    highlight: "27 Regions Analysed",
+    summary: "Transformed regional financial data into interactive dashboards and visual insights to support financial monitoring and comparisons across West Java.",
+    problem: "Regional financial data covers multiple administrative areas, reporting periods, and indicators. Without a consolidated analytical view, identifying trends, comparing financial conditions, and communicating findings becomes more challenging.",
+    role: "Financial data analysis, exploratory data analysis, dashboard development, and reporting support during my internship at the Directorate General of Treasury.",
     process: [
-      draft("Collected and cleaned the regional financial datasets."),
-      draft("Explored the data to choose the indicators worth tracking."),
-      draft("Designed dashboard views for comparison across regions and over time."),
+      "Prepared and validated financial data from regional reporting sources.",
+      "Conducted exploratory analysis to identify trends, variations, and potential outliers.",
+      "Developed analytical visualizations and regional comparisons.",
+      "Built Looker Studio dashboards and prepared findings for internal reporting."
     ],
-    stack: [todo("Tools used — e.g. Python, Excel, Power BI / Looker Studio")],
-    results: [todo("Verified outcome — who used it and what changed")],
-    links: [
-      { label: "View dashboard", href: todo("Dashboard or repo URL") },
+    stack: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Looker Studio",
+      "Matplotlib",
+      "Seaborn",
+      "Excel"
     ],
-    accent: "blush",
+    results: [
+      "Analysed financial indicators covering 27 regencies and cities in West Java.",
+      "Developed interactive dashboards and visual summaries to support internal reporting and financial performance reviews.",
+      "Produced forecasting analyses to support the assessment of monthly budget realization trends."
+    ],
+    access: "Internal project · Public dashboard unavailable",
+    links: [],
+    accent: "blush"
   },
   {
     slug: "fuzzy-scholarship-selection",
     number: "02",
     category: "Web System · Decision Support",
     title: "Fuzzy-Based Scholarship Selection Web System",
-    summary: draft(
-      "A web-based decision-support system that uses fuzzy logic to evaluate scholarship applicants against multiple criteria."
-    ),
-    problem: draft(
-      "Scholarship selection weighs several criteria at once, and many of them don't fit neatly into yes/no rules — which makes manual ranking slow and hard to keep consistent."
-    ),
-    role: todo("Your role — e.g. full-stack developer, fuzzy model design"),
+    highlight: "2,000 Applicant Records",
+    summary: "Developed a web-based decision support system integrating fuzzy logic, multi-criteria prioritization, and fund allocation to support more structured scholarship selection.",
+    problem: "Scholarship selection involves balancing financial need, academic performance, student contributions, and other considerations. Conventional scoring approaches can struggle with uncertainty, while funding limitations require recipient recommendations to account for available budgets and quotas.",
+    role: "Researcher and system developer, responsible for designing the selection model, defining evaluation criteria, analysing model performance, and implementing the web-based decision support workflow.",
     process: [
-      draft("Defined the selection criteria and their fuzzy membership functions."),
-      draft("Built the inference rules that turn applicant data into a ranking score."),
-      draft("Implemented the web interface for entering applicants and reviewing results."),
+      "Prepared the applicant dataset and defined evaluation criteria.",
+      "Designed fuzzy membership functions and inference rules for initial eligibility assessment.",
+      "Applied Fuzzy AHP to determine criterion weights and candidate priorities.",
+      "Integrated return-potential scoring with allocation rules based on available funds and quotas.",
+      "Implemented the web workflow and evaluated model performance."
     ],
-    stack: [todo("Language / framework / database used")],
-    results: [todo("Verified outcome — e.g. tested with N applicants, adopted by …")],
-    links: [{ label: "View repository", href: todo("GitHub repo URL") }],
-    accent: "pink",
+    stack: [
+      "Python",
+      "Fuzzy Sugeno",
+      "Fuzzy AHP",
+      "React",
+      "TypeScript",
+      "Data Analysis"
+    ],
+    results: [
+      "Developed and evaluated the selection model using 2,000 applicant records.",
+      "Achieved 79.63% recall for eligible applicants and 71.66% balanced accuracy on the 400-record test set.",
+      "Implemented applicant eligibility assessment, priority ranking, fund and quota allocation recommendations, and result export functionality in a web-based prototype."
+    ],
+    access: "Academic research · Web-based prototype",
+    links: [],
+    accent: "pink"
   },
   {
     slug: "poverty-classification-research",
     number: "03",
     category: "Research · Machine Learning",
     title: "Data-Driven Poverty Classification Research",
-    summary: draft(
-      "A research project that applies classification methods to socio-economic data to identify poverty status."
-    ),
-    problem: draft(
-      "Targeting social programmes depends on knowing who is in need; data-driven classification can make that identification more systematic."
-    ),
-    role: todo("Your role — e.g. lead researcher, thesis author"),
+    highlight: "95.15% Test Accuracy",
+    summary: "Applied machine learning to socioeconomic indicators from 514 Indonesian regencies and cities to classify poverty status and explore data-driven approaches to regional socioeconomic assessment.",
+    problem: "Poverty assessment requires interpreting multiple socioeconomic indicators, including education, health, and expenditure. Machine learning provides an additional analytical approach for identifying patterns and classifying regional poverty status.",
+    role: "First author and research contributor, involved in data analysis, machine learning methodology, model evaluation, and scientific manuscript preparation.",
     process: [
-      draft("Prepared and pre-processed the socio-economic dataset."),
-      draft("Trained and compared classification models."),
-      draft("Evaluated model performance and interpreted the key factors."),
+      "Collected and prepared publicly available socioeconomic indicators.",
+      "Conducted preprocessing, normalization, and dimensionality reduction using PCA.",
+      "Optimized and evaluated the KNN classification model through cross-validation.",
+      "Examined feature contributions using Random Forest and documented the findings in a scientific publication."
     ],
-    stack: [todo("Language, libraries and algorithms used")],
-    results: [todo("Verified result — e.g. best model + metric, publication")],
-    links: [{ label: "Read paper", href: "https://journal.ukrim.ac.id/index.php/JIF/article/view/753" }],
-    accent: "plum",
-  },
+    stack: [
+      "Python",
+      "K-Nearest Neighbors",
+      "PCA",
+      "Random Forest",
+      "Cross-Validation"
+    ],
+    results: [
+      "Achieved 95.15% test accuracy using an optimized K-Nearest Neighbors classification model.",
+      "Analysed socioeconomic indicators across 514 Indonesian regencies and cities.",
+      "Published in Infact: International Journal of Computers, Volume 10, Number 1, May 2026 (SINTA 5)."
+    ],
+    access: "Published research · Infact, May 2026",
+    links: [
+      {
+        label: "Read paper",
+        href: "https://journal.ukrim.ac.id/index.php/JIF/article/view/753"
+      }
+    ],
+    accent: "plum"
+  }
 ];
+
+// ─── More projects ──────────────────────────────────────────────────────────
+
+export const moreProjectsSection = {
+  heading: "More Projects, More Ways to Explore Data.",
+  intro:
+    "Beyond the featured case studies, these academic projects reflect hands-on experience in machine learning, natural language processing, recommendation systems, and exploratory data analysis.",
+  stackLabel: "Tech Stack",
+};
+
+export const moreProjects = [
+  {
+    slug: "tokopedia-sentiment-analysis",
+    number: "01",
+    title: "Tokopedia Product Review Sentiment Analysis",
+    category: "Natural Language Processing · Sentiment Classification",
+    description:
+      "Analyzed Indonesian e-commerce product reviews to identify customer sentiment patterns. Applied text preprocessing, TF-IDF feature extraction, and Naive Bayes classification, supported by sentiment visualizations and model evaluation.",
+    stack: ["Python", "Pandas", "Scikit-learn", "TF-IDF", "Naive Bayes", "NLP"],
+  },
+  {
+    slug: "skincare-recommendation-system",
+    number: "02",
+    title: "Skincare Product Recommendation System",
+    category: "Recommendation System · Content-Based Filtering",
+    description:
+      "Developed an ingredient-based recommendation approach using 1,138 skincare products across 14 categories. Applied TF-IDF vectorization and cosine similarity to measure ingredient similarities and generate relevant product recommendations.",
+    stack: ["Python", "Pandas", "Scikit-learn", "TF-IDF", "Cosine Similarity"],
+  },
+  {
+    slug: "online-purchase-prediction",
+    number: "03",
+    title: "Online Purchase Prediction",
+    category: "Machine Learning · Predictive Analytics",
+    description:
+      "Explored online shopping session data to predict purchasing behavior using Random Forest classification. Performed feature engineering, compared missing-value handling strategies, and evaluated predictive performance using ROC-AUC.",
+    stack: ["Python", "Pandas", "Scikit-learn", "Random Forest", "Feature Engineering"],
+  },
+  {
+    slug: "west-java-unemployment-analysis",
+    number: "04",
+    title: "West Java Unemployment Rate Analysis",
+    category: "Exploratory Data Analysis · Socioeconomic Data",
+    description:
+      "Analyzed regional unemployment data from BPS, Dukcapil, and the Department of Manpower and Transmigration. Conducted exploratory data analysis to identify unemployment trends, regional differences, and socioeconomic patterns across West Java.",
+    stack: ["Data Cleaning", "Exploratory Data Analysis", "Statistical Analysis", "Data Visualization"],
+  },
+] as const;
 
 // ─── Toolkit ─────────────────────────────────────────────────────────────────
 
@@ -304,7 +391,7 @@ export const toolkit: {
     icon: "code",
     title: "Programming",
     blurb: "The Computer Science foundation underneath the analysis.",
-    items: ["Python", "SQL", "R", draft("Web development")],
+    items: ["Python", "SQL", "R", "React", "TypeScript", "Web development"],
   },
   {
     icon: "messages",
@@ -326,23 +413,23 @@ export const beyond = {
     {
       icon: "users",
       kind: "Leadership",
-      title: todo("Role & organisation (e.g. Head of Division, …)") as Copy,
-      period: todo("Years") as Copy,
-      body: todo("One line: what you led and what came of it") as Copy,
+      title: "Program Lead · I-TRI Challenge" as Copy,
+      period: "2023–2024" as Copy,
+      body: "Led a GEMASTIK preparation program involving 100+ participants, coordinating event planning, team responsibilities, participant engagement, and program execution." as Copy,
     },
     {
       icon: "award",
       kind: "Organisations",
-      title: todo("Student organisation / community") as Copy,
-      period: todo("Years") as Copy,
-      body: todo("One line: your contribution") as Copy,
+      title: "Education & Development Division Staff · BEM KEMAKOM FPMIPA UPI" as Copy,
+      period: "2023–2024" as Copy,
+      body: "Contributed to student development, academic competitions, and organizational programs, including mentoring activities and coordination of more than five competition-related initiatives." as Copy,
     },
     {
       icon: "mic",
       kind: "Public speaking",
-      title: todo("Event, talk or MC role") as Copy,
-      period: todo("Year") as Copy,
-      body: todo("One line: audience and topic") as Copy,
+      title: "Master of Ceremonies · 10+ Campus Events" as Copy,
+      period: "2023–2024" as Copy,
+      body: "Hosted more than 10 university and faculty events, including freshman orientation and anniversary celebrations, engaging audiences of students, faculty members, and alumni." as Copy,
     },
   ],
   // Personal qualities weren't specified in the brief — confirm or replace.
