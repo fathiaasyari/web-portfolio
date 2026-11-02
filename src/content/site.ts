@@ -80,8 +80,6 @@ export const hero = {
   collageWords: ["data", "business", "& a little curiosity"],
   greeting: "Hello, I’m",
   cvPending: "CV coming soon",
-  atlasTitle: "West Java",
-  atlasScope: "27 regions",
   atlasNote: "From regional data to a clearer picture.",
   regionHint: "Explore a region",
   regencyLabel: "Regency",
@@ -169,12 +167,11 @@ export const experience = [
     bullets: [
       "Analysed regional financial data across 27 regencies and cities in West Java to identify trends and assess budget allocation.",
       "Performed exploratory data analysis using Python, Pandas, and NumPy to examine financial indicators and historical patterns.",
-      "Developed an ARIMA-based forecasting model to estimate monthly budget realization trends.",
       "Created interactive dashboards using Looker Studio and data visualizations to support reporting and internal discussions.",
       "Reviewed and validated budget realization reports from more than 20 government work units.",
       "Supported financial anomaly assessments through historical and outlier-pattern analysis.",
     ],
-    tags: ["Python", "Pandas", "NumPy", "ARIMA", "Looker Studio", "Excel", "Matplotlib", "Seaborn"],
+    tags: ["Python", "Pandas", "NumPy", "Looker Studio", "Excel", "Matplotlib", "Seaborn"],
   },
 ];
 
@@ -236,8 +233,7 @@ export const projects: Project[] = [
     ],
     results: [
       "Analysed financial indicators covering 27 regencies and cities in West Java.",
-      "Developed interactive dashboards and visual summaries to support internal reporting and financial performance reviews.",
-      "Produced forecasting analyses to support the assessment of monthly budget realization trends."
+      "Developed interactive dashboards and visual summaries to support internal reporting and financial performance reviews."
     ],
     access: "Internal project · Public dashboard unavailable",
     links: [],
@@ -351,15 +347,6 @@ export const moreProjects = [
       "Explored online shopping session data to predict purchasing behavior using Random Forest classification. Performed feature engineering, compared missing-value handling strategies, and evaluated predictive performance using ROC-AUC.",
     stack: ["Python", "Pandas", "Scikit-learn", "Random Forest", "Feature Engineering"],
   },
-  {
-    slug: "west-java-unemployment-analysis",
-    number: "04",
-    title: "West Java Unemployment Rate Analysis",
-    category: "Exploratory Data Analysis · Socioeconomic Data",
-    description:
-      "Analyzed regional unemployment data from BPS, Dukcapil, and the Department of Manpower and Transmigration. Conducted exploratory data analysis to identify unemployment trends, regional differences, and socioeconomic patterns across West Java.",
-    stack: ["Data Cleaning", "Exploratory Data Analysis", "Statistical Analysis", "Data Visualization"],
-  },
 ] as const;
 
 // ─── Toolkit ─────────────────────────────────────────────────────────────────
@@ -449,7 +436,6 @@ export type ActivityItem = {
   kind: "video" | "photo";
   title: string;
   caption: string;
-  detail: string;
   category: string;
   /** Local path under public, e.g. /images/activity/event.jpg. Null shows a paper placeholder. */
   image: { src: string; alt: string; position?: string } | null;
@@ -471,7 +457,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Reports & discussion",
     title: "From draft to discussion.",
     caption: "A few laptops, a shared screen, and a fresh pair of eyes.",
-    detail: "A report on the shared screen and a table of laptops during the DJPb West Java internship. These are the quieter moments behind a finished document: reading together, discussing the wording, and giving the next draft a little more clarity. Yes, the spreadsheet has a social life too.",
     image: { src: "/images/activity/internship-report-discussion.jpeg", alt: "Colleagues discussing a report displayed on a shared screen around a meeting table", position: "50% 80%" },
   },
   {
@@ -480,7 +465,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Knowledge sharing",
     title: "A seat at the conversation.",
     caption: "Notebook energy, big-room edition.",
-    detail: "A moment from the 2024/25 KSP with Indonesia Focus Group Discussion in Bandung, dated 26 June 2025 on the presentation screen. Part of the internship album: a room of different perspectives, a panel discussion, and plenty to listen to. Curiosity gets a seat, too.",
     image: { src: "/images/activity/internship-ksp-focus-group.jpeg", alt: "Panel at the 2024/25 KSP with Indonesia Focus Group Discussion in Bandung on 26 June 2025", position: "50% 75%" },
   },
   {
@@ -489,7 +473,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · The people",
     title: "Batik, but make it a team photo.",
     caption: "The dress code understood the assignment.",
-    detail: "A group portrait from the internship days, with batik patterns, office lanyards, and everyone's best camera-ready expression. The work matters, and so do the people who make the days memorable. Filing this under: colleagues, colour, and a very good photo.",
     image: { src: "/images/activity/internship-batik-team.jpeg", alt: "Internship team posing together in batik and office attire" },
   },
   {
@@ -498,7 +481,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Team meetings",
     title: "One room, a few extra tabs.",
     caption: "Laptops open. People connected. A quick smile for the camera.",
-    detail: "An office meeting with colleagues around the table and more participants joining on the screen. A little snapshot of the hybrid side of internship life — somewhere between the laptops, microphones, and meeting notes, there is still time for a smile.",
     image: { src: "/images/activity/internship-hybrid-meeting.jpeg", alt: "Colleagues with laptops at an office meeting with remote participants on a video-call screen" },
   },
   {
@@ -507,7 +489,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Beyond the desk",
     title: "A different kind of warm-up.",
     caption: "Before the tabs multiply, a little sunshine and movement.",
-    detail: "An outdoor group exercise moment during the internship days. A change of pace from meeting rooms and screens: fresh air, a bit of movement, and a shared morning outside. Even a data-filled day can start with a little stretch.",
     image: { src: "/images/activity/internship-morning-exercise.jpeg", alt: "A group taking part in morning exercise outdoors in a sunny office courtyard" },
   },
   {
@@ -516,7 +497,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · DJPb West Java",
     title: "The whole team, one frame.",
     caption: "A very full frame of very good company.",
-    detail: "A group photo in front of Gedung Dwi Warna, with office-day formality swapped for a more relaxed moment together. One of the people-filled pages of the DJPb West Java internship album. Getting everyone into the frame might be its own team-building exercise.",
     image: { src: "/images/activity/internship-dwi-warna-team.jpeg", alt: "A large group posing in sportswear in front of Gedung Dwi Warna", position: "50% 65%" },
   },
   {
@@ -525,7 +505,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Learning moments",
     title: "A few charts, a bigger picture.",
     caption: "Listening mode: on. Curiosity: also on.",
-    detail: "A presentation discussing energy-transition financing and its wider economic effects. A snapshot from the internship learning album, where charts on a screen become the start of a bigger conversation. Some days the most useful tool is simply listening closely.",
     image: { src: "/images/activity/internship-energy-transition-discussion.jpeg", alt: "Conference participants listening to a presentation about energy-transition financing and economic effects", position: "50% 85%" },
   },
   {
@@ -534,7 +513,6 @@ export const activities: ActivityItem[] = [
     category: "Internship · Treasury Talks",
     title: "Treasury, with a side of curiosity.",
     caption: "A seat, a screen, and something new to take away.",
-    detail: "A view from the audience at Treasury Talks, with the session title on the screen. Another small learning moment from the internship days — less about having all the answers, more about showing up with a little curiosity and room for a new perspective.",
     image: { src: "/images/activity/internship-treasury-talks.jpeg", alt: "Audience seating facing a presentation screen displaying Treasury Talks", position: "50% 65%" },
   },
   {
@@ -543,7 +521,6 @@ export const activities: ActivityItem[] = [
     category: "School visit · KGTS",
     title: "Small mic, big room.",
     caption: "A room full of students, a mic, and plenty of good energy.",
-    detail: "Kemakom Goes to School — Dari Akademi Jadi Profesi. A little talking, a little laughter, and a room that definitely brought its own energy. The spreadsheet can wait; this moment deserves the spotlight.",
     image: { src: "/images/activity/kemakom-goes-to-school.jpeg", alt: "Two hosts with microphones in front of students at Kemakom Goes to School" },
   },
   {
@@ -552,7 +529,6 @@ export const activities: ActivityItem[] = [
     category: "Co-hosting",
     title: "Two mics, one cue card.",
     caption: "The very serious business of keeping things fun.",
-    detail: "Microphones ready, cue cards in hand, and a quick check-in between co-hosts. A tiny behind-the-scenes reminder that even the smoothest programme has a few little glances that say: your turn, or mine?",
     image: { src: "/images/activity/co-hosting-cue-cards.jpeg", alt: "Two co-hosts holding microphones and sharing cue cards indoors" },
   },
   {
@@ -561,7 +537,6 @@ export const activities: ActivityItem[] = [
     category: "Outdoor moments",
     title: "Sunshine & sound checks.",
     caption: "Mic? Check. Cue card? Check. A little sunshine? Bonus.",
-    detail: "Taking the microphone outside, with greenery as the backdrop and a cue card close by. A sunny little pause for the camera — because an activity album needs a bit of personality between all the busy moments.",
     image: { src: "/images/activity/outdoor-mic-moments.jpeg", alt: "An outdoor portrait with a white cap, microphone and cue card against a leafy backdrop" },
   },
   {
@@ -570,7 +545,6 @@ export const activities: ActivityItem[] = [
     category: "Campus activities",
     title: "Good company, great energy.",
     caption: "Passing the mic, sharing a smile, keeping the moment going.",
-    detail: "Two microphones and a shared moment outdoors. Somewhere between speaking and listening, there is always room for a smile. Saving this one for the people-and-memories side of the portfolio.",
     image: { src: "/images/activity/campus-hosting-duo.jpeg", alt: "Two hosts in dark shirts speaking into microphones outside a campus building" },
   },
   {
@@ -579,7 +553,6 @@ export const activities: ActivityItem[] = [
     category: "Presenting & sharing",
     title: "A little courage, out loud.",
     caption: "One mic, a few slides, and a story worth sharing.",
-    detail: "A classroom, a presentation screen, and a chance to put ideas into words. Blue blazers on, microphone up. Some moments are about making a point; this one also makes a lovely memory.",
     image: { src: "/images/activity/classroom-presentation.jpeg", alt: "A student in a blue university blazer speaking beside a presentation screen and a fellow presenter" },
   },
   {
@@ -588,7 +561,6 @@ export const activities: ActivityItem[] = [
     category: "DINAMIK 18 · Campus celebration",
     title: "Cue cards & birthday wishes.",
     caption: "A stage, a celebration, and more than one reason to smile.",
-    detail: "A few pages from DINAMIK 18: hosting on stage, a celebratory tumpeng, and music to round things off. One collage, several little moments — the kind of campus day that refuses to fit into just one photo.",
     image: { src: "/images/activity/dinamik-18-celebration.jpeg", alt: "DINAMIK 18 collage showing stage hosts, a tumpeng celebration and a musical performance" },
   },
   {
@@ -597,7 +569,6 @@ export const activities: ActivityItem[] = [
     category: "Kemakom Podcast #3",
     title: "Internships, with a side of uni.",
     caption: "Lika-Liku Magang Sambil Kuliah — let’s talk about the juggling act.",
-    detail: "The poster for Kemakom Podcast #3, Lika-Liku Magang Sambil Kuliah, featuring Fadjrin Diraja Muhammad. A little campus conversation about the internship-and-study balancing act. Find more conversations on the BEM Kemakom YouTube channel.",
     image: { src: "/images/activity/kemakom-podcast-internship.jpeg", alt: "Kemakom Podcast number 3 poster titled Lika-Liku Magang Sambil Kuliah featuring two people seated at a table" },
     href: "https://www.youtube.com/@BEMKemakom",
     linkLabel: "Explore Kemakom on YouTube",
@@ -608,7 +579,6 @@ export const activities: ActivityItem[] = [
     category: "Kemakom · Campus gathering",
     title: "A full room, a shared story.",
     caption: "Cue cards in hand. Campus memories in the making.",
-    detail: "A collage of a Kemakom gathering, from the audience to the hosts with their microphones and cue cards. A little reminder that a good event is made up of everyone in the room — and the moments between the talking points.",
     image: { src: "/images/activity/kemakom-campus-gathering.jpeg", alt: "Kemakom campus gathering collage with a seated audience and two hosts holding microphones and cue cards" },
   },
   {
@@ -616,7 +586,6 @@ export const activities: ActivityItem[] = [
     kind: "video",
     title: "Improve — Future Solution",
     caption: "KomCast #3. A little less scrolling, a little more listening.",
-    detail: "Improve — Future Solution, KomCast #3. Press play for another little page of the activity scrapbook.",
     category: "KomCast #3 · Video",
     image: null,
     href: "https://www.youtube.com/watch?v=e8lGdw7EMUU",
@@ -629,8 +598,9 @@ export const contact = {
   eyebrow: "Contact",
   heading: "Let’s make something *meaningful* together.",
   body:
-    "I’m open to roles and collaborations in data analytics, business analysis and technology. The fastest way to reach me is email.",
+    "I’m open to roles and collaborations in data analytics, business analysis and technology. Reach me by email or WhatsApp.",
   email: "syailafathiaa@gmail.com" as string | Placeholder,
+  phone: { label: "0812 7105 8686", href: "https://wa.me/6281271058686" },
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/syailafathia/" },
     { label: "GitHub", href: "https://github.com/fathiaasyari" },

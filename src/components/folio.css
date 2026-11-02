@@ -460,6 +460,8 @@
 .folio-contact .todo { color: #65514f; border-color: #98616d; font-size: 12px; }
 .folio-emailLink { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: clamp(17px, 1.7vw, 23px); text-decoration: underline; text-underline-offset: 5px; transition: color 180ms; }
 .folio-emailLink:hover { color: #853d51; }
+.folio-phoneRow { border-top: 0; }
+.folio-phoneLabel { display: block; margin-top: 6px; font-size: 12px; color: #65514f; }
 .folio-emailRow button { color: var(--folio-ink); border-color: #b88e95; background: var(--folio-cream); }
 .folio-socialLinks { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 14px; }
 .folio-socialLink { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; font-size: 15px; opacity: 1; }

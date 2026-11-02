@@ -7,7 +7,6 @@ import Image from "next/image";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight, Download } from "lucide-react";
 import { cv, hero, person, photo } from "@/content/site";
-import { WestJavaMap } from "@/components/west-java-map";
 import "@/components/folio.css";
 import "@/components/hero-collage.css";
 import "@/components/hero-stage.css";
@@ -101,10 +100,6 @@ export function Hero() {
             <motion.div aria-hidden className="folio-collageFlower" style={{ y: reduce ? 0 : flowerY, rotate: reduce ? 0 : flowerRotate }}><svg viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="50" rx="18" ry="48" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(60 50 50)" /><ellipse cx="50" cy="50" rx="18" ry="48" transform="rotate(120 50 50)" /></g><circle cx="50" cy="50" r="10" fill="var(--folio-cream)" /></svg></motion.div>
             <div aria-hidden className="folio-collageBars"><span /><span /><span /><svg viewBox="0 0 100 70" fill="none"><path d="M8 58Q43 62 78 12M60 14l20-5 3 21" /></svg></div>
             <p className="folio-collageNote">{hero.atlasNote}</p>
-            <details className="folio-collageAtlas">
-              <summary><span>{hero.atlasTitle}<small>{hero.atlasScope}</small></span><span className="folio-atlasToggle" aria-hidden>+</span></summary>
-              <div className="folio-atlas"><WestJavaMap regions={hero.regions} caption={hero.figureCaption} /></div>
-            </details>
           </motion.div>
         </div>
       </div>

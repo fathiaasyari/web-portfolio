@@ -1,4 +1,4 @@
-import { ArrowUp, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Mail, Phone } from "lucide-react";
 import { contact, footer, person } from "@/content/site";
 import { CopyEmail } from "@/components/copy-email";
 import { CvButton, isTodo, MaybeLink, Text } from "@/components/ui";
@@ -34,6 +34,14 @@ export function Contact() {
                   <CopyEmail email={email} />
                 </>
               )}
+            </div>
+            <div className="folio-emailRow folio-phoneRow">
+              <Phone aria-hidden size={20} strokeWidth={1.5} />
+              <a href={contact.phone.href} className="folio-emailLink" target="_blank" rel="noopener noreferrer">
+                {contact.phone.label}<span className="folio-phoneLabel">WhatsApp</span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              <ArrowUpRight aria-hidden size={20} strokeWidth={1.5} />
             </div>
             <ul className="folio-socialLinks">
               {contact.links.map((link) => (

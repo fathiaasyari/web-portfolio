@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Camera, Maximize2, Paperclip, Play, X } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, Camera, Maximize2, Paperclip, Play, X } from "lucide-react";
 import { activities, activitySection, type ActivityItem } from "@/content/site";
 import { ScrollOrnament } from "@/components/scroll-ornament";
 import { useMotionPreference } from "@/components/use-motion-preference";
@@ -141,8 +141,7 @@ function PhotoViewer({ item, origin, position, total, onClose, onPrevious, onNex
   if (!item.image) return null;
 
   return (
-    // Restore aria-describedby="activity-photo-detail" when the description below is approved.
-    <dialog ref={dialog} className="folio-photoViewer" aria-labelledby="activity-photo-title"
+    <dialog ref={dialog} className="folio-photoViewer" aria-label="Photo viewer"
       onCancel={(event) => { event.preventDefault(); closeViewer(); }}
       onClick={(event) => { if (event.target === event.currentTarget) closeViewer(); }}
       onKeyDown={(event) => {
@@ -157,25 +156,12 @@ function PhotoViewer({ item, origin, position, total, onClose, onPrevious, onNex
           <div className="folio-photoFull">
             <Image key={item.id} src={item.image.src} alt={item.image.alt} fill unoptimized sizes="(max-width: 799px) 90vw, 75vw" />
           </div>
-          <p className="folio-photoPrintNote">a little moment, kept.</p>
         </div>
-        <div className="folio-photoStory">
-          <div className="folio-photoNoteCopy">
-          <div className="folio-photoCounter" role="status" aria-live="polite">Photo {position + 1} of {total}</div>
-          <span className="folio-activityKind">{item.category}</span>
-          <h2 id="activity-photo-title">{item.title}</h2>
-          {/* Draft photo descriptions are kept in site.ts until approved for production.
-          <p id="activity-photo-detail">{item.detail}</p>
-          */}
-          <a className="folio-activityAction" href={item.image.src} target="_blank" rel="noopener noreferrer">Open original photo<ArrowUpRight size={17} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
-          {item.href && <a className="folio-activityAction" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel ?? (item.kind === "video" ? "Watch on YouTube" : "View original post")}<ArrowUpRight size={17} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>}
-          </div>
+        <div className="sr-only" role="status" aria-live="polite">Photo {position + 1} of {total}: {item.image.alt}</div>
           <div className="folio-photoNavigation">
             <button type="button" disabled={closing} onClick={onPrevious} aria-label="Previous photo"><ArrowLeft size={19} aria-hidden="true" />Previous</button>
             <button type="button" disabled={closing} onClick={onNext} aria-label="Next photo">Next<ArrowRight size={19} aria-hidden="true" /></button>
           </div>
-          <p className="folio-photoHint">A little memory, a little closer.<br />Use the arrow keys to wander. Esc to return.</p>
-        </div>
       </div>
     </dialog>
   );
